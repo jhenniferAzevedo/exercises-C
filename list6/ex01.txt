@@ -1,0 +1,12 @@
+Nao ha codigo a ser feito aqui, apenas faça o teste de mesa a seguir:
+
+1. Diga o valor de cada variável após a execução de cada trecho de código. 
+    a. int i = 10; int j = (i == 10) && (i = 3); printf("%d ", i); printf("%d ", j);
+    b. int x; int y = 10; x = y * 3; while (x > y) { x = x - 5; y = y + 1; }
+    c. a = 5; b = 10; s = 0; if (a > b) { s = (a+b)/2; } while (a <= b) { s = s + a; a = a + 1; b = b - 2; } 
+    d. a = 8; b = 2; s = 0; if (a > b) { s = (a+b)/2; } while (a <= b) { s = s + a; a = a + 1; b = b - 2; }
+    e. a = 4; b = 5; c = 0; if (a > 10) { a = a + 10; b = b + 1; } else { b = 0; if (c > 1) a = a + 5; }
+    f. a = 14; b = 5; c = 10; if (a > 10) { a = a + 10; b = b + 1; } else { b = 0; if (c > 1) a = a + 5; }
+    g. n = 5; soma = 0; i = 1; while (i <= n) { soma = soma + i; i = i + 1; } 
+    h. n = 5; soma = 0; for (i = 1; i <= n; i++) { soma = soma + i;}
+    i. int s = 1, parc = 3; for (int i=1; i<=4; i++) { s += parc; }

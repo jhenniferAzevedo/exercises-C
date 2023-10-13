@@ -25,7 +25,7 @@
 
 #include <stdio.h>
 
-int main(void)
+void main(void)
 {
     int carteira, quantidade, produto, saldo, custo;
 
