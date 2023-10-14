@@ -5,7 +5,6 @@ pessoa que tem o menor salário. Para encerrar a entrada de dados, será inserid
 -1 na idade. Considere que pelo menos uma pessoa foi consultada. */
 
 #include <stdio.h>
-#include <string.h>
 
 int main(void)
 {
