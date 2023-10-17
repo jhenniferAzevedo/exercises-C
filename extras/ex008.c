@@ -21,17 +21,15 @@ int main(void)
         printf("termo [%d]: ", i);
         scanf("%d", &v1[i]);
     }
-    printf("\n");
 
-    printf("digite os termos do segundo vetor.\n");
+    printf("\ndigite os termos do segundo vetor.\n");
     for (i = 0; i < QNT_MAX; i++)
     {
         printf("termo [%d]: ", i);
         scanf("%d", &v2[i]);
     }
-    printf("\n");
 
-    printf("o vetor soma ficou assim: { ");
+    printf("\no vetor soma ficou assim: { ");
     for (i = 0; i < QNT_MAX; i++)
     {
         soma[i] = v1[i] + v2[(QNT_MAX - 1) - i];

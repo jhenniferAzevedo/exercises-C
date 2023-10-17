@@ -164,6 +164,10 @@ int main(void)
             printf("A unidade %d possui %d setores.\n\n", unidade,
                    contSetores[unidade - 1]);
             break;
+        
+        case 7: break;
+        default:
+            printf("\nvalor invalido! digite um numero valido.");
         }
 
         printf("Qual relatorio voce deseja ver? ");

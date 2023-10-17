@@ -175,6 +175,10 @@ int main(void)
             printf("Total de encomendas: %d\n\n",
                    camisaB + camisaP + camisaA + calcaM + calcaT);
             break;
+        
+        case 6: break;
+        default:
+            printf("\nvalor invalido! digite um numero valido.");
         }
 
         printf("Qual relatorio voce deseja ver? ");
