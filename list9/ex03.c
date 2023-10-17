@@ -10,9 +10,9 @@
 int main(void)
 {
     char op;
-    int atleta, semana, relatorioAtleta, idade[QNT_ATLETAS];
+    int atleta, semana, resposta, idade[QNT_ATLETAS];
     float nivOxigenio[QNT_ATLETAS][QNT_SEMANAS], freqCardiaca[QNT_ATLETAS][QNT_SEMANAS];
-    float mediaNivOxigenio[QNT_ATLETAS] = {0}, maiorFreqCardiaca[QNT_ATLETAS];
+    float mediaNivOxigenio[QNT_ATLETAS] = {0}, maiorFreqCardiaca[QNT_ATLETAS] = {0};
 
     // Ler os dados dos atletas
     for (atleta = 0; atleta < QNT_ATLETAS; atleta++)
@@ -43,25 +43,25 @@ int main(void)
     do
     {
         printf("\ndeseja conferir o relatorio de qual atleta? ");
-        scanf("%d", &relatorioAtleta);
+        scanf("%d", &resposta);
 
         printf("\nvai querer analisar todas as medicoes do nivel de oxigenio e da frequencia cardiaca? (s) ou (n): ");
         scanf(" %c", &op);
 
-        printf("\n\tRELATORIO DO ATLETA %d\n", relatorioAtleta);
+        printf("\n\tRELATORIO DO ATLETA %d\n", resposta);
 
         if (op == 's')
         {
             for (semana = 0; semana < QNT_SEMANAS; semana++)
             {
                 printf("\n\t--> semana %d\n", semana + 1);
-                printf("\t  frequência cardiaca: %.1f\n", freqCardiaca[relatorioAtleta - 1][semana]);
-                printf("\t  nivel de oxigenio: %.1f\n\n", nivOxigenio[relatorioAtleta - 1][semana]);
+                printf("\t  frequência cardiaca: %.1f\n", freqCardiaca[resposta - 1][semana]);
+                printf("\t  nivel de oxigenio: %.1f\n\n", nivOxigenio[resposta - 1][semana]);
             }
         }
 
-        printf("\t--> nivel medio de oxigenio no sangue: %.1f\n", mediaNivOxigenio[relatorioAtleta - 1]);
-        printf("\t--> maior frequencia cardiaca: %.1f\n\n", maiorFreqCardiaca[relatorioAtleta - 1]);
+        printf("\t--> nivel medio de oxigenio no sangue: %.1f\n", mediaNivOxigenio[resposta - 1]);
+        printf("\t--> maior frequencia cardiaca: %.1f\n\n", maiorFreqCardiaca[resposta - 1]);
 
         printf("\tainda quer fazer outras verificações? (s) ou (n): ");
         scanf(" %c", &op);

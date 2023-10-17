@@ -1,35 +1,14 @@
-/*  Encomenda de Uniformes
-Uma empresa fará encomenda de uniformes para seus funcionários em suas 2 unidades.
-Cada funcionário receberá 2 calças e 2 blusas de uniforme. A unidade 1 possui 2 setores
-e a unidade 2 possui 5 setores. Cada setor escolhe a cor da camiseta (branca, preta ou azul)
-e o tecido da calça (tactel ou moletom).
-
-Escreva um algoritmo que receba como entrada o número de funcionários de cada setor e as
-características do seu uniforme (cor da camiseta e tecido da calça).
-
-Após as leituras, o algoritmo deve emitir um destes relatórios, de acordo com a escolha do
-usuário:
-
-   a. Total de funcionários da unidade (dado o número da unidade, 1 ou 2, mostre o total de
-   funcionários da unidade)
-   b. Total de funcionários do setor (dado o número da unidade e do setor, mostre o total de
-   funcionários deste setor)
-   c. Uniforme do setor (dado o número da unidade e do setor, mostre as características do
-   uniforme deste setor)
-   d. Maior unidade (mostra a unidade que tem mais funcionários)
-   e. Total de encomendas (mostre as quantidades de peças que serão encomendadas: quantidade
-   de camisetas brancas,
-   de camisetas pretas, de camisetas azuis, de calças de tactel e de calças de moletom).
-
-Após a emissão de cada relatório, o programa deve perguntar se o usuário deseja emitir outro
-relatório ou se deseja finalizar o programa. */
+/* Reveja o exercídio anterior, "Encomenda de Uniformes" (questao-extra-2.c)
+e considere que agora a empresa tem 3 unidades e cada unidade tem um número
+indeterminado de setores (no máximo 10 setores). Não pergunte quantos setores
+cada unidade tem, estes valores devem ser contados.*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define QNT_MAX_UN 2
-#define QNT_MAX_ST 5
+#define QNT_MAX_UN 3
+#define QNT_MAX_ST 10
 #define MAX_POR_FUNC 2
 #define TAM_MAX 10
 
@@ -40,6 +19,7 @@ int main(void)
 
     int funcionariosUN[QNT_MAX_UN] = {0};
     int funcionariosST[QNT_MAX_UN][QNT_MAX_ST];
+    int contSetores[QNT_MAX_UN] = {0};
     int corCamisa[QNT_MAX_UN][QNT_MAX_ST];
     int tecidoCalca[QNT_MAX_UN][QNT_MAX_ST];
 
@@ -52,20 +32,25 @@ int main(void)
     printf("(1) branca \n(2) preta \n(3) azul");
     printf("\n\nOpcoes de calca:\n");
     printf("(1) moletom \n(2) tectel\n");
+    printf("\nfinalize com -1\n");
 
     // Leitura dos dados de cada unidade
     for (unidade = 0; unidade < QNT_MAX_UN; unidade++)
     {
-        printf("\n* UNIDADE %d *\n", unidade + 1);
-        for (setor = 0; setor < QNT_MAX_ST; setor++)
+        printf("\n\tUNIDADE %d\n", unidade + 1);
+
+        for (setor = 0; setor < 10; setor++)
         {
-            printf("\n\tSETOR %d\n", setor + 1);
+            printf("\nSETOR %d\n", setor + 1);
             printf("> quantidade de funcionarios: ");
             scanf("%d", &funcionariosST[unidade][setor]);
 
+            if (funcionariosST[unidade][setor] < 0) break;
+
+            contSetores[unidade]++;
             funcionariosUN[unidade] += funcionariosST[unidade][setor];
 
-            printf("\t> cor da camisa: ");
+            printf("> cor da camisa: ");
             scanf("%d", &corCamisa[unidade][setor]);
 
             switch (corCamisa[unidade][setor])
@@ -84,7 +69,7 @@ int main(void)
                 break;
             }
 
-            printf("\t> tecido da calca: ");
+            printf("> tecido da calca: ");
             scanf("%d", &tecidoCalca[unidade][setor]);
 
             switch (tecidoCalca[unidade][setor])
@@ -98,11 +83,6 @@ int main(void)
                 calcaT += funcionariosST[unidade][setor] * MAX_POR_FUNC;
                 break;
             }
-
-            if (unidade == 0 && setor == 1)
-            {
-                break;
-            }
         }
 
         if (funcionariosUN[unidade] > maiorUN)
@@ -111,6 +91,7 @@ int main(void)
             indiceMaiorUN = unidade + 1;
         }
     }
+
     system("cls");
 
     // Relatórios
@@ -120,12 +101,13 @@ int main(void)
     printf("(3) caracteristicas do uniforme do setor\n");
     printf("(4) unidade com mais funcionarios\n");
     printf("(5) total de encomendas da empresa\n");
-    printf("(6) finaliza as verificacoes de relatorios\n");
+    printf("(6) total de setores da unidade\n");
+    printf("(7) finaliza as verificacoes de relatorios\n");
 
     printf("\nQual relatorio voce deseja ver? ");
     scanf("%d", &relatorio);
 
-    while (relatorio != 6)
+    while (relatorio != 7)
     {
         switch (relatorio)
         {
@@ -159,8 +141,7 @@ int main(void)
 
         // Unidade com mais funcionários
         case 4:
-            printf("A unidade %d eh a que possui mais funcionarios, com a quantidade "
-                   "de %d.\n\n", indiceMaiorUN, maiorUN);
+            printf("A unidade %d eh a que possui mais funcionarios, com %d.\n\n", indiceMaiorUN, maiorUN);
             break;
 
         // Total de encomendas da empresa
@@ -175,13 +156,21 @@ int main(void)
             printf("Total de encomendas: %d\n\n",
                    camisaB + camisaP + camisaA + calcaM + calcaT);
             break;
+
+        // Total de setores da unidade
+        case 6:
+            printf("De qual unidade? ");
+            scanf("%d", &unidade);
+            printf("A unidade %d possui %d setores.\n\n", unidade,
+                   contSetores[unidade - 1]);
+            break;
         }
 
         printf("Qual relatorio voce deseja ver? ");
         scanf("%d", &relatorio);
     }
 
-    printf("fim.\n\n");
+    printf("finalizando...\n\n");
     system("pause");
     return 0;
 }

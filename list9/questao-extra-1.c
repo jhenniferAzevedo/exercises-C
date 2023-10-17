@@ -1,4 +1,4 @@
-/* Refaça a prova do dia 13-09 utilizando arrays, além disso, acrescente o relatório:
+/* Refaça a prova do dia 13-09 utilizando arrays. Além disso, acrescente o relatório:
     - Dado o dia de auditoria, mostre o PH e as medidas de temperatura aferidas neste dia.
     - Após, forneça a opção do usuário consultar outro dia se ele quiser.
  */

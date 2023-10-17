@@ -6,14 +6,12 @@ int main(void)
 {
     int num[9], i;
 
-    for (i = 0; i < 10; i++)
-    {
+    for (i = 0; i < 10; i++) {
         printf("digite um numero inteiro: ");
         scanf("%d", &num[i]);
     }
 
-    for (i = 0; i < 10; i++)
-    {
+    for (i = 0; i < 10; i++) {
         printf("%d ", num[i]);
     }
 

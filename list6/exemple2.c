@@ -4,12 +4,9 @@
 
 void main(void)
 {
-    int idade, cont;
-    float media;
+    int idade, cont = 0;
+    float media = 0;
     char op;
-
-    media = 0;
-    cont = 0;
 
     do
     {

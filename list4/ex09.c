@@ -18,26 +18,18 @@ int main(void)
     printf("\n> Quantos metros tem o terreno? ");
     scanf("%f", &metros);
     
-    switch(regiao)
-    {
-        case 1:
-            valor = metros * 100;
-            break;
-        case 2:
-            valor = metros * 150;
-            break;
-     }
+    if(regiao == 1) {
+        valor = metros * 100;
+    } else valor = metros * 150; 
 
-     if(metros > 400)
-     {
+    if(metros > 400) {
         valor *= 1.25;
-     }
+    }
 
-     printf("\n> O terreno e de esquina? \n(s) sim ou (n) nao: ");
-     scanf(" %c", &resposta);
+    printf("\n> O terreno e de esquina? \n(s) sim ou (n) nao: ");
+    scanf(" %c", &resposta);
    
-    if(resposta == 's')
-    {
+    if(resposta == 's'){
         valor += 600;
     }
 

@@ -26,7 +26,7 @@ int main(void)
         printf("\nTURMA %d\n", i + 1);
         for (j = 0; j < QNT_MAX_ALUNOS; j++)
         {
-            printf("nota do aluno %d: ", j + 1);
+            printf("> nota do aluno %d: ", j + 1);
             scanf("%f", &notasFinais[i][j]);
 
             if (notasFinais[i][j] == -1)
