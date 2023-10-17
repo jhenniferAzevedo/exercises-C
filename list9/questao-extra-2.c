@@ -181,7 +181,7 @@ int main(void)
             printf("\nvalor invalido! digite um numero valido.");
         }
 
-        printf("Qual relatorio voce deseja ver? ");
+        printf("\nQual relatorio voce deseja ver? ");
         scanf("%d", &relatorio);
     }
 
