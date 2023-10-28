@@ -11,7 +11,7 @@ int main(void)
     printf("\nDigite os coeficientes da equacao do 2o grau: ");
     scanf("%lf %lf %lf", &a, &b, &c);
 
-    confere_coeficiente_a(&a, &b, &c);
+    confere_coeficiente_a(&a);
     calcular_raizes(a, b, c);
 
     return 0;

@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <math.h>
 
-void confere_coeficiente_a(double *a, double *b, double *c)
+void confere_coeficiente_a(double *a)
 {
     while (*a == 0)
     {
         printf("\nEssa equacao nao e do segundo grau, nos de um valor valido!"
-               "\nDigite os coeficientes da equacao do 2o grau: ");
-        scanf("%lf %lf %lf", a, b, c);
+               "Troque o valor do coeficiente 'a': ");
+        scanf("%lf", a);
     }
 }
 
