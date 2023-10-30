@@ -1,5 +1,3 @@
-/* faça um programa em linguagem C para encontrar as raízes de uma equação do 2° grau com a fórmula de Bháskara. */
-
 #include <stdio.h>
 #include <math.h>
 #include "header.h"

@@ -1,5 +1,3 @@
-/* Faça uma função que recebe um valor numérico e retorne o seu valor absoluto. */
-
 #include <stdio.h>
 #include "header.h"
 

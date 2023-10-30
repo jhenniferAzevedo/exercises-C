@@ -1,5 +1,3 @@
-/* Faça uma função que recebe dois valores numéricos e retorne o maior valor. */
-
 #include <stdio.h>
 #include "header.h"
 
