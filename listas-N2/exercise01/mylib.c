@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include "header.h"
 
 void confere_coeficiente_a(double *a)
 {
