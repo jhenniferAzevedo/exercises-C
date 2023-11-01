@@ -1,5 +1,4 @@
 #define MAX_BIM 4
-#define MAX_EXAM 2
 typedef struct DadosDoAluno
 {
     float NotaProva[MAX_BIM],
@@ -14,4 +13,10 @@ typedef struct DadosDoAluno
 float CalcularNotaBimestral(DadosDoAluno *, int);
 
 /* Retorna o valor da nota final com base as quatro notas bimestrais. */
-float CalcularNotaFinal(float [], int);
+float CalcularNotaFinal(DadosDoAluno *, int);
+
+/* Retorna a poprcentagem de presença do aluno com base os quatro bimestres */
+float CalcularPorcentPresenca(DadosDoAluno *, int);
+
+/* Verifica e mostra pro usuario se ele passou, fara recuperacao ou esta reprovado */
+void VerificarStatus(DadosDoAluno *);
