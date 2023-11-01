@@ -60,5 +60,6 @@
     "stdio.h": "c",
     "ex01": "c",
     "header.h": "c"
-  }
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
