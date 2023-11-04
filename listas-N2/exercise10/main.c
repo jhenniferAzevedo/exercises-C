@@ -2,7 +2,7 @@
 
 int calcula(int x, int y);
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     int a, b;
 
