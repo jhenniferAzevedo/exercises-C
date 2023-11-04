@@ -17,7 +17,6 @@ void reorder(int a, int b, int c)
 {
     int change;
 
-    /* se b < a, entao a e b trocam de valor */
     if (a > b)
     {
         change = a;
@@ -25,7 +24,6 @@ void reorder(int a, int b, int c)
         b = change;
     }
     
-    /* se c < a, entao a e c trocam de valor */
     if (a > c)
     {
         change = a;
@@ -33,20 +31,11 @@ void reorder(int a, int b, int c)
         c = change;
     }
 
-    /* se a > c, entao c e a trocam de valor */
-    if (c < a)
-    {
-        change = c;
-        c = a;
-        a = c;
-    }
-    
-    /* se b > c, entao c e b trocam de valor */
     if (c < b)
     {
         change = c;
         c = b;
-        b = c;
+        b = change;
     }
 
     printf("\nA = %d"
