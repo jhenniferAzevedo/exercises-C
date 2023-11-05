@@ -1,29 +1,37 @@
 #include <stdio.h>
 
-float power(float base, float expoente);
+double power(double base, int expoente);
 
 int main(void)
 {
-    float a, b;
+    double a;
+    int b;
 
-    printf("\nDigite o valor da base e do expoente: ");
-    scanf("%f %f", &a, &b);
+    printf("\nDigite o valor da base: ");
+    scanf("%lf", &a);
+    
+    printf("Digite o valor do expoente: ");
+    scanf("%d", &b);
     
     while (b < 0)
     {
         printf("Apenas expoentes positivos!\n");
-        printf("\nDigite o valor da base e do expoente: ");
-        scanf("%f %f", &a, &b);
+
+        printf("Digite o valor da base: ");
+        scanf("%lf", &a);
+
+        printf("Digite o valor do expoente: ");
+        scanf("%d", &b);
     } 
     
     printf("O resultado final e %.1f.\n", power(a, b));
     return 0;
 }
 
-float power(float base, float expoente)
+double power(double base, int expoente)
 {
     int i;
-    float result = 1;
+    double result = 1;
 
     if (expoente > 0)
     {

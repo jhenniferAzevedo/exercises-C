@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/jhenn/Documents/c/exercises-C/listas-N2/exercise08",
-      "program": "c:/Users/jhenn/Documents/c/exercises-C/listas-N2/exercise08/build/Debug/outDebug",
+      "cwd": "c:/Users/jhenn/Documents/c/exercises-C/listas-C/pointers",
+      "program": "c:/Users/jhenn/Documents/c/exercises-C/listas-C/pointers/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
