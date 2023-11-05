@@ -20,4 +20,3 @@ repolho for superior a 1200, emita um sinal de “Super produção”.Diga tamb�
 semana no período que não houve entregas.
 
 Após imprimir um relatório, oferecer a opção para o usurário imprimir outro relatório se desejar.
- 

@@ -6,11 +6,10 @@ número de livros encomendados e, para cada livro, receba o seguimento do livro 
 Médio ou Superior) e se o livro teve incentivo fiscal ou não. Para encerrar a coleta dos dados,
 será digitado o código -1 na variável de entrada referente ao número de livros do pedido.
 
-Após o encerramento das leituras, o algoritmo deve imprimir o seguinte relatório: 
+Após o encerramento das leituras, o algoritmo deve imprimir o seguinte relatório:
 
 - Porcentagem de livros de cada seguimento;
 - Número total de livros que não receberam incentivo fiscal;
 - Média de livros por pedido no período;
 - Quantos pedidos tiveram mais de 20 livros com incentivo fiscal;
 - Quantos livros tinha o maior pedido.
- 

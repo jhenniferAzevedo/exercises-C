@@ -8,4 +8,3 @@ Mostre, para cada filial, o valor total (em R$) em estoque. Mostre também a per
 produtos de mercearia, de limpeza e de perecíveis, contando toda as filiais. Por último mostre o
 preço do produto mais caro entre todos os produtos lidos e quantas filiais têm menos que R$
 60.000,00 em estoque.
- 
