@@ -5,7 +5,7 @@ máximo 5 alunos em cada. Os alunos recebem 3 notas ao longo do ano, a média ar
 notas consiste na média final do aluno e a nota para receber o certificado é no mínimo 7,0
 pontos. O aluno deve ter também no máximo 10 faltas, caso contrário será reprovado por falta.
 Se o aluno tiver média final abaixo de 5,0 também será reprovado. O aluno que não foi aprovado,
-nem reprovado, terá a chance de fazer uma prova substitutiva. 
+nem reprovado, terá a chance de fazer uma prova substitutiva.
 
 Elabore um programa em linguagem C que leia para cada aluno, seu nome, suas 3 notas, sua
 frequência e mostre um dos os seguintes relatórios:
