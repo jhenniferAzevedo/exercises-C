@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int reorder(int a, int b, int c);
+void reorder(int *a, int *b, int *c);
 
 int main(void)
 {
@@ -9,8 +9,7 @@ int main(void)
     printf("digite tres numeros: ");
     scanf("%d %d %d", &x, &y, &z);
 
-    x, y, z = reorder(x, y, z);
-
+    reorder(&x, &y, &z);
     printf("\nX = %d"
            "\nY = %d"
            "\nZ = %d",
@@ -18,30 +17,28 @@ int main(void)
     return 0;
 }
 
-int reorder(int a, int b, int c)
+void reorder(int *a, int *b, int *c)
 {
     int change;
 
-    if (a > b)
+    if (*a > *b)
     {
-        change = a;
-        a = b;
-        b = change;
-    }
-    
-    if (a > c)
-    {
-        change = a;
-        a = c;
-        c = change;
+        change = *a;
+        *a = *b;
+        *b = change;
     }
 
-    if (c < b)
+    if (*a > *c)
     {
-        change = c;
-        c = b;
-        b = change;
+        change = *a;
+        *a = *c;
+        *c = change;
     }
 
-    return a, b, c;
+    if (*c < *b)
+    {
+        change = *c;
+        *c = *b;
+        *b = change;
+    }
 }
