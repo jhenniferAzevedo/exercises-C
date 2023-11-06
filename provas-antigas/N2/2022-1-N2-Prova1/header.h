@@ -83,7 +83,7 @@ void show_class_data(class_data class[], int n_class);
 void counts_final_average_8(student_data student[][MAX_TURMAS], class_data class[]);
 
 /* Verifica quais alunos zeraram alguma nota. Então, esse valor é contado. */
-void counts_zeroed_notes(student_data student[][MAX_TURMAS], class_data class[]);
+void counts_zeroed_grades(student_data student[][MAX_TURMAS], class_data class[]);
 
 /* Verifica quantos alunos farão prova substitutiva. Então, esse valor é contado. */
 void counts_substitute_test(student_data student[][MAX_TURMAS], class_data class[]);

@@ -75,7 +75,7 @@ void calculate_data(student_data student[][MAX_TURMAS], class_data class[])
 {
     calculate_final_average(student, class);
     counts_final_average_8(student, class);
-    counts_zeroed_notes(student, class);
+    counts_zeroed_grades(student, class);
     counts_substitute_test(student, class);
     calculate_class_average(student, class);
 }
@@ -228,7 +228,7 @@ void counts_final_average_8(student_data student[][MAX_TURMAS], class_data class
     }
 }
 
-void counts_zeroed_notes(student_data student[][MAX_TURMAS], class_data class[])
+void counts_zeroed_grades(student_data student[][MAX_TURMAS], class_data class[])
 {
     int i, j, k, count = 0;
 
