@@ -23,7 +23,10 @@ typedef struct class_data
 
 
 /* Lê as notas dos alunos de cada turma. */
-/* void read_grades(float grades[][][]); */
+/* void read_grades(float grades[][MAX_TURMAS]); */
+
+/* Verifica se o número de estudantes é válido. Se não for, pede para trocá-lo. */
+void check_number_of_students(int *number_of_students);
 
 /* Mostra o menu de relatórios. */
 void show_menu(void);
@@ -36,7 +39,6 @@ void show_menu(void);
  * calculate_class_average();
  */
 void calculate_data(student_data student[][MAX_TURMAS], class_data class[]);
-
 
 /* Mostra o relatório do aluno de acordo com seu número e sua turma. */
 void show_stutent_data(student_data student[][MAX_TURMAS], int n_student, int n_class);

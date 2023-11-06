@@ -2,6 +2,17 @@
 #include <string.h>
 #include "header.h"
 
+void check_number_of_students(int *number_of_students)
+{
+    while (*number_of_students > 5)
+    {
+        printf("Nao e permitido mais que 5 alunos!\n"
+                "Digite um valor valido. \n\n"
+                "Ha quantos alunos na turma? ");
+        scanf("%d", number_of_students);
+    }
+}
+
 void show_menu(void)
 {
     int resp;

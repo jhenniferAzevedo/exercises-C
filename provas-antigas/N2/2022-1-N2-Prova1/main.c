@@ -14,14 +14,7 @@ int main(void)
         printf("Ha quantos alunos na turma? ");
         scanf("%d", &qnt_alunos);
 
-        while (qnt_alunos > 5)
-        {
-            printf("Nao e permitido mais que 5 alunos!\n"
-                    "Digite um valor valido. \n\n"
-                    "Ha quantos alunos na turma? ");
-            scanf("%d", &qnt_alunos);
-        }
-
+        check_number_of_students(&qnt_alunos);
         turma[n_turma].total_alunos = qnt_alunos;
 
         for (n_aluno = 0; n_aluno < qnt_alunos; n_aluno++)
