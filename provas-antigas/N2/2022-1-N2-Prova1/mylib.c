@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include "header.h"
 
 /* Leitura de todos os dados */
@@ -162,38 +161,27 @@ void calculate_final_average(student_data student[][MAX_TURMAS], class_data clas
     }
 }
 
-void check_all(class_data class[], int *n_student, int *n_class)
-{
-    check_student(class, &n_student, &n_class);
-    check_class(&n_class);
-}
-
 void check_student(class_data class[], int *n_student, int *n_class)
 {
     
-    while (*n_student < 0 || *n_student >= class[*n_class].total_alunos)
+    while (*n_student < 1 || *n_student > class[*n_class].total_alunos)
     {
         printf("Esse aluno nao existe! \n"
                 "Digite um valor valido. \n\n"
-                "Qual e o numero do aluno e da turma? ");
-        scanf("%d %d", n_student, n_class);
+                "Qual e o numero do aluno? ");
+        scanf("%d", n_student);
     }
-
-    *n_student--;
-    *n_class--;
 }
 
 void check_class(int *n_class)
 {
-    while (*n_class < 0 || *n_class >= MAX_TURMAS)
+    while (*n_class < 1 || *n_class > MAX_TURMAS)
     {
         printf("Essa turma nao existe! \n"
                 "Digite um valor valido. \n\n"
                 "Qual e o numero da turma? ");
         scanf("%d", n_class);
     }
-
-    *n_class--;
 }
 
 /* Tratamento dos dados referente às turmas */
@@ -230,10 +218,11 @@ void counts_final_average_8(student_data student[][MAX_TURMAS], class_data class
 
 void counts_zeroed_grades(student_data student[][MAX_TURMAS], class_data class[])
 {
-    int i, j, k, count = 0;
+    int i, j, k, count;
 
     for (i = 0; i < MAX_TURMAS; i++)
     {
+        count = 0;
         class[i].total_nota_zerada = 0;
         for (j = 0; j < class[i].total_alunos; j++)
         {

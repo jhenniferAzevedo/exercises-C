@@ -20,12 +20,16 @@ int main(void)
         switch (resp)
         {
         case 1:
-            printf("\nQual e o numero do aluno e sua turma? ");
-            scanf("%d %d", &n_aluno, &n_turma);
+            printf("\nQual e o numero da turma? ");
+            scanf("%d", &n_turma);
+            check_class(&n_turma);
+
+            printf("E qual e o numero do aluno? ");
+            scanf("%d", &n_aluno);
+            check_student(turma, &n_aluno, &n_turma);
+
             n_aluno--;
             n_turma--;
-
-            check_all(turma, &n_aluno, &n_turma);
             show_stutent_data(aluno, n_aluno, n_turma);
             system("pause");
             break;
@@ -33,9 +37,9 @@ int main(void)
         case 2:
             printf("\nQual e o numero da turma? ");
             scanf("%d", &n_turma);
-            n_turma--;
-
             check_class(&n_turma);
+
+            n_turma--;
             show_class_data(turma, n_turma);
             system("pause");
             break;
@@ -45,7 +49,7 @@ int main(void)
             break;
         
         default:
-            printf("Valor Invalido! Digite um valor valido.\n");
+            printf("\nValor Invalido! Digite um valor valido.\n");
             system("pause");
             break;
         }
