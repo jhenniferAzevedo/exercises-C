@@ -2,6 +2,55 @@
 #include <string.h>
 #include "header.h"
 
+/* Leitura de todos os dados */
+void read_data(student_data student[][MAX_TURMAS], class_data class[])
+{
+    int n_class, total_students;
+    for (n_class = 0; n_class < MAX_TURMAS; n_class++)
+    {
+        printf("\nTURMA %d\n", n_class + 1);
+        printf("Ha quantos alunos na turma? ");
+        scanf("%d", &total_students);
+        check_number_of_students(&total_students);
+        class[n_class].total_alunos = total_students;
+        read_student_data(student, n_class, total_students);
+    }
+}
+
+void read_student_data(student_data student[][MAX_TURMAS], int n_class, int total_students)
+{
+    int n_student;
+    for (n_student = 0; n_student < total_students; n_student++)
+    {
+        printf("\n\tALUNO %d\n", n_student + 1);
+        read_names_by_student(student, n_student, n_class);
+        read_grades_by_student(student, n_student, n_class);
+        read_absences_by_student(student, n_student, n_class);
+    }
+}
+
+void read_grades_by_student(student_data student[][MAX_TURMAS], int n_student, int n_class)
+{
+    int n_grade;
+    for (n_grade = 0; n_grade < MAX_NOTAS; n_grade++)
+    {
+        printf("\t(%d) Nota: ", n_grade + 1);
+        scanf("%f", &student[n_student][n_class].notas[n_grade]);
+    }
+}
+
+void read_names_by_student(student_data student[][MAX_TURMAS], int n_student, int n_class)
+{
+    printf("\tNome: ");
+    scanf("%s", student[n_student][n_class].nome);
+}
+
+void read_absences_by_student(student_data student[][MAX_TURMAS], int n_student, int n_class)
+{
+    printf("\tFaltas: ");
+    scanf("%d", &student[n_student][n_class].faltas);
+}
+
 void check_number_of_students(int *number_of_students)
 {
     while (*number_of_students > 5)
@@ -111,6 +160,40 @@ void calculate_final_average(student_data student[][MAX_TURMAS], class_data clas
             student[j][i].media_final /= MAX_NOTAS;
         }
     }
+}
+
+void check_all(class_data class[], int *n_student, int *n_class)
+{
+    check_student(class, &n_student, &n_class);
+    check_class(&n_class);
+}
+
+void check_student(class_data class[], int *n_student, int *n_class)
+{
+    
+    while (*n_student < 0 || *n_student >= class[*n_class].total_alunos)
+    {
+        printf("Esse aluno nao existe! \n"
+                "Digite um valor valido. \n\n"
+                "Qual e o numero do aluno e da turma? ");
+        scanf("%d %d", n_student, n_class);
+    }
+
+    *n_student--;
+    *n_class--;
+}
+
+void check_class(int *n_class)
+{
+    while (*n_class < 0 || *n_class >= MAX_TURMAS)
+    {
+        printf("Essa turma nao existe! \n"
+                "Digite um valor valido. \n\n"
+                "Qual e o numero da turma? ");
+        scanf("%d", n_class);
+    }
+
+    *n_class--;
 }
 
 /* Tratamento dos dados referente às turmas */

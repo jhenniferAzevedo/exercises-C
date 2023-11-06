@@ -22,11 +22,24 @@ typedef struct class_data
 } class_data;
 
 
-/* Lê as notas dos alunos de cada turma. */
-/* void read_grades(float grades[][MAX_TURMAS]); */
+/* Lê os dados dos alunos de cada turma. */
+void read_data(student_data student[][MAX_TURMAS], class_data class[]);
+
+/* Lê os dados de cada aluno. */
+void read_student_data(student_data student[][MAX_TURMAS], int n_class, int total_students);
+
+/* Lê o nome do aluno especificado. */
+void read_grades_by_student(student_data student[][MAX_TURMAS], int n_student, int n_class);
+
+/* Lê as notas do aluno especificado. */
+void read_names_by_student(student_data student[][MAX_TURMAS],  int n_student, int n_class);
+
+/* Lê a quantidade de faltas do aluno especificado. */
+void read_absences_by_student(student_data student[][MAX_TURMAS], int n_student, int n_class);
 
 /* Verifica se o número de estudantes é válido. Se não for, pede para trocá-lo. */
 void check_number_of_students(int *number_of_students);
+
 
 /* Mostra o menu de relatórios. */
 void show_menu(void);
@@ -52,6 +65,15 @@ int check_student_status(student_data student[][MAX_TURMAS], int n_student, int 
 /* Mostra a mensagem de acordo com o status do aluno. */
 void show_message(int status);
 
+
+/* Verifica se o número da turma e do estudante digitado pelo usuário excede o máximo permitido. */
+void check_all(class_data class[], int *n_student, int *n_class);
+
+/* Verifica se o número do estudante digitado pelo usuário excede o máximo permitido. */
+void check_student(class_data class[], int *n_student, int *n_class);
+
+/* Verifica se o número da turma digitado pelo usuário excede o máximo permitido. */
+void check_class(int *n_class);
 
 /* Mostra o relatório da turma especificada. */
 void show_class_data(class_data class[], int n_class);
