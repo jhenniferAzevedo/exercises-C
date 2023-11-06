@@ -66,7 +66,8 @@ int check_student_status(student_data student[][MAX_TURMAS], int n_student, int 
 void show_message(int status);
 
 
-/* Verifica se o número da turma e do estudante digitado pelo usuário excede o máximo permitido. */
+/* Verifica se o número da turma e do estudante digitado pelo usuário excede o máximo permitido. 
+ * Se sim, pede para que o usuário troque. */
 void check_all(class_data class[], int *n_student, int *n_class);
 
 /* Verifica se o número do estudante digitado pelo usuário excede o máximo permitido. */
