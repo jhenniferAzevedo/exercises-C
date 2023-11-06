@@ -59,14 +59,18 @@ int main(void)
             scanf("%d %d", &n_aluno, &n_turma);
             n_aluno--;
             n_turma--;
+
             show_stutent_data(aluno, n_aluno, n_turma);
+            system("pause");
             break;
         
         case 2:
             printf("\nQual e o numero da turma? ");
             scanf("%d", &n_turma);
             n_turma--;
+            
             show_class_data(turma, n_turma);
+            system("pause");
             break;
         
         case 0:
