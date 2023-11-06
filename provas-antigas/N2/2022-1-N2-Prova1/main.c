@@ -68,7 +68,7 @@ int main(void)
             printf("\nQual e o numero da turma? ");
             scanf("%d", &n_turma);
             n_turma--;
-            
+
             show_class_data(turma, n_turma);
             system("pause");
             break;
@@ -85,40 +85,3 @@ int main(void)
 
     return 0;
 }
-
-/* Curso de 1 ano
- * Total de 2 turmas
- * No máximo 5 alunos
- * Três notas ao longo do ano
- * Media final = media aritmetica dessas notas
- */
-
-/* Inputs
- * Nome 
- * Notas
- * Frequência
- */
-
-/* Consulta por aluno
- * Nome
- * Notas
- * Média final
- * Frequência
- * Mensagem
- */
-
-/* Consulta por turma
- * Total de alunos
- * Total de médias acima de 8
- * Total de provas substitutivas
- * Média das médias
- */
-
-/* Consulta por aluno: Dado o número do aluno e de sua turma, mostre seu nome, suas notas,
- * sua média final, sua frequência e uma das mensagens: “Reprovado por falta”, “Reprovado por
- * nota”, “Certificado Liberado” ou “Fará substitutiva”.
- * 
- * Consulta por turma: Dado o número da turma, mostre quantos alunos tem a turma, quantos
- * tiveram média final acima de 8, quantos alunos tiveram algum zero em suas notas, quantos
- * farão prova substitutiva e qual é a média de notas geral da turma. 
- */

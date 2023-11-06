@@ -13,7 +13,7 @@ void show_menu(void)
 
 void calculate_data(student_data student[][MAX_TURMAS], class_data class[])
 {
-    calculate_final_average(student);
+    calculate_final_average(student, class);
     counts_final_average_8(student, class);
     counts_zeroed_notes(student, class);
     counts_substitute_test(student, class);
@@ -25,11 +25,11 @@ void show_stutent_data(student_data student[][MAX_TURMAS], int n_student, int n_
 {
     int status_final = check_student_status(student, n_student, n_class);
     printf("\n> Nome do estudante: %s \n"
-           "> Primeira nota: %f \n"
-           "> Segunda nota: %f \n"
-           "> Terceira nota: %f \n"
+           "> Primeira nota: %.1f \n"
+           "> Segunda nota: %.1f \n"
+           "> Terceira nota: %.1f \n"
            "> Numero de faltas: %d \n"
-           "> Media final: %f \n",
+           "> Media final: %.1f \n",
            student[n_student][n_class].nome,
            student[n_student][n_class].notas[0],
            student[n_student][n_class].notas[1],
@@ -79,18 +79,18 @@ void show_message(int status)
         break;
     
     case 3:
-        puts("> Fará substitutiva.");
+        puts("> Fara substitutiva.");
         break;
     }
 }
 
-void calculate_final_average(student_data student[][MAX_TURMAS])
+void calculate_final_average(student_data student[][MAX_TURMAS], class_data class[])
 {
     int i, j, k;
 
     for (i = 0; i < MAX_TURMAS; i++)
     {
-        for (j = 0; j < MAX_ALUNOS; j++)
+        for (j = 0; j < class[i].total_alunos; j++)
         {
             student[j][i].media_final = 0;
             for (k = 0; k < MAX_NOTAS; k++)
@@ -109,7 +109,7 @@ void show_class_data(class_data class[], int n_class)
            "> Quantidade de alunos com media final maior que 8: %d \n"
            "> Quantidade de alunos que tiraram algum zero: %d \n"
            "> Quantidade de alunos que farao prova substitutiva: %d \n"
-           "> Media geral da turma: %f \n",
+           "> Media geral da turma: %.1f \n",
            class[n_class].total_alunos,
            class[n_class].total_medias_acima_8,
            class[n_class].total_nota_zerada,
@@ -124,7 +124,7 @@ void counts_final_average_8(student_data student[][MAX_TURMAS], class_data class
     for (i = 0; i < MAX_TURMAS; i++)
     {
         class[i].total_medias_acima_8 = 0;
-        for (j = 0; j < MAX_ALUNOS; j++)
+        for (j = 0; j < class[i].total_alunos; j++)
         {
             if (student[j][i].media_final > 8)
             {
@@ -141,7 +141,7 @@ void counts_zeroed_notes(student_data student[][MAX_TURMAS], class_data class[])
     for (i = 0; i < MAX_TURMAS; i++)
     {
         class[i].total_nota_zerada = 0;
-        for (j = 0; j < MAX_ALUNOS; j++)
+        for (j = 0; j < class[i].total_alunos; j++)
         {
             for (k = 0; k < MAX_NOTAS; k++)
             {
@@ -166,7 +166,7 @@ void counts_substitute_test(student_data student[][MAX_TURMAS], class_data class
     for (i = 0; i < MAX_TURMAS; i++)
     {
         class[i].total_provas_subst = 0;
-        for (j = 0; j < MAX_ALUNOS; j++)
+        for (j = 0; j < class[i].total_alunos; j++)
         {
             status = check_student_status(student, j, i);
             if (status == 3)
@@ -184,10 +184,10 @@ void calculate_class_average(student_data student[][MAX_TURMAS], class_data clas
     for (i = 0; i < MAX_TURMAS; i++)
     {
         class[i].media_geral = 0;
-        for (j = 0; j < MAX_ALUNOS; j++)
+        for (j = 0; j < class[i].total_alunos; j++)
         {
             class[i].media_geral += student[j][i].media_final;
         }
-        class[i].media_geral /= MAX_ALUNOS;
+        class[i].media_geral /= class[i].total_alunos;
     }
 }

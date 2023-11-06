@@ -42,7 +42,7 @@ void calculate_data(student_data student[][MAX_TURMAS], class_data class[]);
 void show_stutent_data(student_data student[][MAX_TURMAS], int n_student, int n_class);
 
 /* Calcula o valor da média final de cada um dos alunos. */
-void calculate_final_average(student_data student[][MAX_TURMAS]);
+void calculate_final_average(student_data student[][MAX_TURMAS], class_data class[]);
 
 /* Retorna o status do aluno (aprovado, recuperação, reprovado por nota ou por falta). */
 int check_student_status(student_data student[][MAX_TURMAS], int n_student, int n_class);
