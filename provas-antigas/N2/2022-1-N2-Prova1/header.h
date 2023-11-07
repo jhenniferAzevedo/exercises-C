@@ -25,13 +25,13 @@ typedef struct class_data
 /* Lê os dados dos alunos de cada turma. */
 void read_data(student_data student[][MAX_TURMAS], class_data class[]);
 
-/* Lê os dados de cada aluno. */
+/* Lê os dados do aluno especificado. */
 void read_student_data(student_data student[][MAX_TURMAS], int n_class, int total_students);
 
-/* Lê o nome do aluno especificado. */
+/* Lê as notas do aluno especificado. */
 void read_grades_by_student(student_data student[][MAX_TURMAS], int n_student, int n_class);
 
-/* Lê as notas do aluno especificado. */
+/* Lê o nome do aluno especificado. */
 void read_names_by_student(student_data student[][MAX_TURMAS],  int n_student, int n_class);
 
 /* Lê a quantidade de faltas do aluno especificado. */
@@ -67,7 +67,7 @@ void show_message(int status);
 
 
 /* Verifica se o número da turma digitado pelo usuário excede o máximo permitido. 
- * Se sim, pede para que o usuário troque. */
+ * Se sim, pede para que o usuário troque-o. */
 void check_class(int *n_class);
 
 /* Verifica se o número do estudante digitado pelo usuário excede o máximo permitido. 

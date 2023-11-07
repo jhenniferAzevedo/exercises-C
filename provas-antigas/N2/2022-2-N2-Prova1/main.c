@@ -3,13 +3,14 @@
 
 int main(void)
 {
+    order_data cliente[MAX_CLIENT];
     return 0;
 }
 
 /* Uma fábrica de argamassas vende 3 produtos:
  *    - argamassa AC3 20kg 
  *    - argamassa AC2 20kg 
- *    - rejunte 5kg 1
+ *    - rejunte 5kg
  * entregas são feitas em Palmas ou Porto Nacional
  * registro de apenas dois grandes clientes 
  * número identerminado de pedidos (max 10)
