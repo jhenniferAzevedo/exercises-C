@@ -19,4 +19,4 @@ void read_array(int array[], int size) {
         printf("Digite o elemento %d: ", i);
         scanf("%d", &array[i]);
     }
-}
+} 
