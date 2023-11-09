@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/jhenn/Documents/c/exercises-C/provas-antigas/N2/2022-1-N2-Prova1",
-      "program": "c:/Users/jhenn/Documents/c/exercises-C/provas-antigas/N2/2022-1-N2-Prova1/build/Debug/outDebug",
+      "cwd": "c:/Users/jhenn/Documents/c/exercises-C",
+      "program": "c:/Users/jhenn/Documents/c/exercises-C/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
