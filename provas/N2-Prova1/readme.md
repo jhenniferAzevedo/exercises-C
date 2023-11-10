@@ -29,20 +29,20 @@ com mesma cor em linhas diferentes.
 Após esta leitura inicial, ofereça ao vendedor, sempre que desejar, a possibilidade de consultar um
 destes relatórios:
 
-- Relatório geral
-    - mostre todos os veículos e seus dados;
-    - mostre a quantidade total de veículos;
-    - mostre a percentagem de ocupação das garagens.
+- **Relatório geral**
+  - mostre todos os veículos e seus dados;
+  - mostre a quantidade total de veículos;
+  - mostre a percentagem de ocupação das garagens.
 
-- Relatório por cor (dada a cor)
-    - mostre a quantidade total e todos os veículos desta cor;
+- **Relatório por cor (dada a cor)**
+  - mostre a quantidade total e todos os veículos desta cor;
 
-- Relatório por código (dado o código)
-    - mostre a quantidade total de veículos;
-    - mostre todos os veículos com o código e seus dados;
+- **Relatório por código (dado o código)**
+  - mostre a quantidade total de veículos;
+  - mostre todos os veículos com o código e seus dados;
 
-- Relatório por veículo (dados o código do veículo e sua cor)
-    - mostre a quantidade por veículo.
+- **Relatório por veículo (dados o código do veículo e sua cor)**
+  - mostre a quantidade por veículo.
     Se o veículo for encontrado, a busca deve ser interrompida.
 
 Pode ocorrer a necessidade de cadastrar um veículo que tenha sido adquirido esporadicamente, então o
