@@ -10,7 +10,7 @@
 int main(void)
 {
     int cadastro_veiculo[25][3], contador[5], resp;
-    init_array(contador, 4);
+    init_array(contador, 5);
     read_data(cadastro_veiculo, contador);
 
     do
