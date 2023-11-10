@@ -40,8 +40,10 @@ destes relatórios:
 - Relatório por código (dado o código)
     - mostre a quantidade total de veículos;
     - mostre todos os veículos com o código e seus dados;
-    - mostre a quantidade por veículo, dados o código do veículo e sua cor.
+
+- Relatório por veículo (dados o código do veículo e sua cor)
+    - mostre a quantidade por veículo.
     Se o veículo for encontrado, a busca deve ser interrompida.
-    
+
 Pode ocorrer a necessidade de cadastrar um veículo que tenha sido adquirido esporadicamente, então o
 programa deve ser capaz de inserir um veículo (apenas 1) a qualquer momento.

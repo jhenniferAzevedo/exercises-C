@@ -3,19 +3,12 @@
 
 /* Sem usar variável global. */
 
-/* Variaveis que precisam ser inicializadas:
- * Todas as contadoras;
- * 
- */
-
 int main(void)
 {
-    const int MAX_CADASTROS = 25;
-    const int MAX_VEICULOS = 150;
-    int n_veiculo = 0, total_registro, resp;
+    int n_veiculo = 0, resp[2];
 
-    int cadastro_veiculo[MAX_CADASTROS][3],
-        cor = 0, codigo = 1, qntd = 2;
+    int cadastro_veiculo[25][4],
+        cor = 0, codigo_veiculo = 1, qntd = 2, codigo_cadastro = 3;
 
     int contador[4],
         total_cadastros = 0,
@@ -23,18 +16,23 @@ int main(void)
         total_veiculos_por_cor = 2,
         total_veiculos_por_codigo = 3;
     init_array(contador, 4);
-    read_data(cadastro_veiculo, contador, &total_registro);
+    read_data(cadastro_veiculo, contador);
+
+    float valor;
 
     do
     {
-        printf("\nRELATORIOS\n"
-               "(0) Finalizar \n"
+        resp[0] = 0;
+        printf("\n\nOPCOES\n"
+               "(0) Finalizar programa \n"
                "(1) Relatorio geral \n"
                "(2) Relatorio por cor \n"
-               "(3) Relatorio por codigo \n");
-        scanf("%d", &resp);
+               "(3) Relatorio por codigo \n"
+               "(4) Relatorio por veiculo \n"
+               "(5) Adicionar um veiculo \n");
+        scanf("%d", &resp[0]);
 
-        switch (resp)
+        switch (resp[0])
         {
         case 1:
             /*
@@ -42,17 +40,21 @@ int main(void)
                 mostre a quantidade total de veículos;
                 mostre a percentagem de ocupação das garagens;
             */
-            for (n_veiculo = 0; n_veiculo < total_registro; n_veiculo++)
+            for (n_veiculo = 0; n_veiculo < contador[total_cadastros]; n_veiculo++)
             {
-                printf("\nCadastro %d\n"
+                printf("\n\n>>> Cadastro %d\n"
                        "Codigo do veiculo: %d\n"
                        "Codigo da cor do veiculo: %d\n"
                        "Quantidade do veiculo: %d\n",
                        n_veiculo + 1,
-                       cadastro_veiculo[n_veiculo][codigo],
+                       cadastro_veiculo[n_veiculo][codigo_veiculo],
                        cadastro_veiculo[n_veiculo][cor],
                        cadastro_veiculo[n_veiculo][qntd]);
             }
+            printf("\n>>> Total de veiculos: %d", contador[total_veiculos]);
+
+            valor = calculate_garage_percentage(contador);
+            printf("\n>>> Porcentagem de ocupacao: %.2f%%\n", valor);
             /* printf("\nTotal de veiculos: %d");
             printf("\nPorcentagem de ocupacao da garagem: "); */
             break;
@@ -61,29 +63,49 @@ int main(void)
             /*
                 mostre a quantidade total e todos os veículos desta cor
             */
-            printf("Qual a cor que deseja conferir? ");
-            scanf("%d", &resp);
-            printf("Quantidade total de veiculos: ");
+            printf("Qual a cor que voce deseja conferir? ");
+            scanf("%d", &resp[0]);
+            printf("Quantidade total de veiculos: %d\n", contador[total_veiculos_por_cor]);
+            printf("\nTodos os veículos da cor X\n");
+            for (n_veiculo = 0; n_veiculo < contador[total_cadastros]; n_veiculo++)
+            {
+                printf("\nCadastro %d\n"
+                       "Codigo do veiculo: %d\n"
+                       "Quantidade do veiculo: %d\n",
+                       n_veiculo + 1,
+                       cadastro_veiculo[n_veiculo][codigo_veiculo],
+                       cadastro_veiculo[n_veiculo][qntd]);
+            }
             break;
 
         case 3:
-            printf("Qual o codigo que deseja conferir? ");
-            scanf("%d", &resp);
+            printf("Qual o codigo que voce deseja conferir? ");
+            scanf("%d", &resp[0]);
             /*
                 mostre a quantidade total e todos os veículos com o código e seus dados),
+            */
+            break;
+        
+        case 4:
+            printf("Qual o codigo que voce deseja conferir? ");
+            scanf("%d", &resp[codigo_veiculo]);
+            printf("E qual cor? ");
+            scanf("%d", &resp[cor]);
+            /*
                 busca por veículo (Dados o código do veículo e sua cor, mostre a quantidade.
                 Se o veículo for encontrado, a busca deve ser interrompida).
             */
+            /* printf("total: %d\n", cadastro_veiculo[resp[]][--resp]); */
             break;
 
         case 0:
-            printf("\nFinalizando programa...\n");
+            printf("\nFinalizando...\n");
             break;
         default:
             printf("\nValor invalido! \nDigite um numero valo.\n");
             break;
         }
-    } while (resp != 0);
+    } while (resp[0] != 0);
 }
 
 /*  Ideia: 

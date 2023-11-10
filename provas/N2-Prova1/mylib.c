@@ -6,12 +6,13 @@
 
     --> para o array *registration[][3]*
     const int color = 0;
-    const int code = 1;
+    const int code_vehicle = 1;
     const int amount = 2;
+    const int code_register = 3;
 
     --> para o array *counter[4]*
-    const int total_registers = 0;
-    const int total_vehicles = 1;
+    const int total_registers = 0;      MAX 25
+    const int total_vehicles = 1;       MAX 150
     const int vehicles_by_color = 2;
     const int vehicles_by_code = 3;
 */
@@ -25,30 +26,30 @@ void init_array(int array[], int size)
     }
 }
 
-void read_data(int registration[][3], int counter[], int *total_registrations)
+/* LEITURA DOS DADOS */
+
+void read_data(int registration[][4], int counter[])
 {
+    const int total_registers = 0;
     int n_register = 0, result;
-    do
-    {
-        printf("\nCADASTRO (%d)\n", n_register + 1);
+    do {
+        printf("\n\tCADASTRO (%d)\n", n_register + 1);
         ask_vehicle_code(registration, n_register);
         ask_color_code(registration, n_register);
-        result = ask_how_many_vehicle(registration, counter, n_register);
+        result = ask_how_many_vehicle(registration, counter, &n_register);
         n_register++;
     } while (n_register < 25 && result != 0);
-    *total_registrations = n_register;
+    counter[total_registers] = n_register;
 }
 
-/* Lendo as respostas dos usuários. */
-
-void ask_vehicle_code(int registration[][3], int n_register)
+void ask_vehicle_code(int registration[][4], int n_register)
 {
-    const int code = 1;
+    const int code_vehicle = 1;
     printf("\tCodigo do veiculo: ");
-    scanf("%d", &registration[n_register][code]);
+    scanf("%d", &registration[n_register][code_vehicle]);
 }
 
-void ask_color_code(int registration[][3], int n_register)
+void ask_color_code(int registration[][4], int n_register)
 {
     const int color = 0;
     printf("\n\tCores disponiveis \n"
@@ -62,49 +63,52 @@ void ask_color_code(int registration[][3], int n_register)
     check_color_code(registration, n_register);
 }
 
-void check_color_code(int registration[][3], int n_register)
+void check_color_code(int registration[][4], int code_register)
 {
     const int color = 0;
-    int value = registration[n_register][color];
+    int value = registration[code_register][color];
     while (value < 1 || value > 4)
     {
         printf("\n\tEsse valor e invalido! \n"
                "\tPor favor, digite um numero valido. \n\n"
                "\tCodigo da cor do veiculo: ");
-        scanf("%d", &registration[n_register][color]);
-        value = registration[n_register][color];
+        scanf("%d", &registration[code_register][color]);
+        value = registration[code_register][color];
     }
 }
 
-int ask_how_many_vehicle(int registration[][3], int counter[], int n_register)
+
+int ask_how_many_vehicle(int registration[][4], int counter[], int *n_register)
 {
     const int amount = 2;
-    int test;
+    int result;
     printf("\tQuantidade de veiculos: ");
-    scanf("%d", &registration[n_register][amount]);
-    test = error_handling_of_max_amount(registration, counter, n_register);
-    return test;
+    scanf("%d", &registration[*n_register][amount]);
+    result = error_handling_of_max_amount(registration, counter, n_register);
+    return result;
 }
 
-void count_total_vehicle(int registration[][3], int counter[], int n_register)
+/* RELATÓRIO GERAL */
+
+void count_total_vehicle(int registration[][4], int counter[], int *n_register)
 {
     const int amount = 2, total_vehicles = 1;
-    counter[total_vehicles] += registration[n_register][amount];
+    counter[total_vehicles] += registration[*n_register][amount];
 }
 
-
-int error_handling_of_max_amount(int registration[][3], int counter[], int n_register)
+int error_handling_of_max_amount(int registration[][4], int counter[], int *n_register)
 {
     const int amount = 2, total_vehicles = 1;
     int status = check_status_garage(counter);
-    int value_register = registration[n_register][amount];
+    int amount_register = registration[*n_register][amount];
     int max_counter = 150 - counter[total_vehicles];
 
     if (status == 0)
     {
-        if (value_register >= 1 && value_register <= max_counter)
+        if (amount_register >= 1 && amount_register <= max_counter)
         {
             count_total_vehicle(registration, counter, n_register);
+            check_existing_registrations(registration, counter, n_register);
             status = check_status_garage(counter);
         }
         else
@@ -120,14 +124,13 @@ int error_handling_of_max_amount(int registration[][3], int counter[], int n_reg
 int check_status_garage(int counter[])
 {
     const int total_vehicles = 1;
-    int vehicles_so_far = counter[total_vehicles];
 
-    if (vehicles_so_far < 150)
+    if (counter[total_vehicles] < 150)
     {
         return 0;
     }
     
-    if (vehicles_so_far == 150)
+    if (counter[total_vehicles] == 150)
     {
         return 1;
     }
@@ -135,34 +138,74 @@ int check_status_garage(int counter[])
     return 2;
 }
 
-int show_message_by_status_garage(int registration[][3], int counter[], int n_register, int status)
+int show_message_by_status_garage(int registration[][4], int counter[], int *n_register, int status)
 {
     const int total_vehicles = 1;
-    int answer, value;
+    int result = 0, value;
     
     switch (status)
     {
     case 0:
-        printf("\nAinda ha veiculos? \n"
+        printf("\nAdicionar novo veiculo? \n"
                "(0) nao \n"
                "(1) sim \n");
-        scanf("%d", &answer);
-        return answer;
+        scanf("%d", &result);
+        break;
     
     case 1:
         printf("\nValor maximo de veiculos na garagem alcancado.\n"
                "Encerrando cadastro dos veiculos...\n");
         system("pause");
-        return 0;
+        break;
     
     case 2:
         value = 150 - counter[total_vehicles];
-        printf("\nVariavel Total: %d", counter[total_vehicles]);
-        printf("\n\tGaragem lotada! "
+        printf("\n\tValor nao permitido!"
                "\n\tPor favor, digite um valor entre 1 e %d\n", value);
-        ask_how_many_vehicle(registration, counter, n_register);
+        result = ask_how_many_vehicle(registration, counter, n_register);
+    }
+    return result;
+}
+
+void check_existing_registrations(int registration[][4], int counter[], int *n_register)
+{
+    const int color = 0, code_vehicle = 1;
+    int new_code1 = registration[*n_register][code_vehicle];
+    int new_code2 = registration[*n_register][color], i;
+
+    for (i = 0; i < *n_register; i++)
+    {
+        int old_code1 = registration[i][code_vehicle];
+        int old_code2 = registration[i][color];
+        if (new_code1 == old_code1 && new_code2 == old_code2)
+        {
+            add_to_existing_registration(registration, n_register, i);
+            *n_register = *n_register - 1;
+            return;
+        }
     }
 }
+
+void add_to_existing_registration(int registration[][4], int *new_register, int old_register)
+{
+    const int color = 0, code_vehicle = 1, amount = 2;
+    int new_amount = registration[*new_register][amount];
+    registration[old_register][amount] += new_amount;
+}
+
+/* void show_all_vehicles(int registration[][4], int counter[])
+{} */
+
+float calculate_garage_percentage(int counter[])
+{
+    const int total_vehicles = 1;
+    float value = counter[total_vehicles];
+    value = (value * 100) / 150;
+    return value;
+}
+
+/* RELATÓRIO POR COR */
+
 
 /* void main(void)
 {
@@ -174,7 +217,7 @@ int show_message_by_status_garage(int registration[][3], int counter[], int n_re
 } */
 
 /*
-void count_vehicle_by_color(int registration[][3], int counter[], n_color)
+void count_vehicles_by_color(int registration[][3], int counter[], n_color)
 {
     const int amount = 2, vehicles_by_color = 2;
     counter_max[vehicle_by_color] = 0;
@@ -188,7 +231,7 @@ void count_vehicle_by_color(int registration[][3], int counter[], n_color)
     }
 }
 
-void count_vehicle_by_code(int registration[][3], int counter[], int n_code)
+void count_vehicles_by_code(int registration[][3], int counter[], int n_code)
 {
     const int amount = 2, vehicles_by_code = 3;
     counter_max[vehicle_by_code] = 0;
@@ -202,3 +245,5 @@ void count_vehicle_by_code(int registration[][3], int counter[], int n_code)
     }
 }
 */
+
+
