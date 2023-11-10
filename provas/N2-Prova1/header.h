@@ -108,8 +108,5 @@ void find_register(int registration[][3], int counter[], int n_color, int n_code
 
 // 5. INSERIR NOVO VEÍCULO
 
-/* Adiciona UM novo veículo. */
+/* Adiciona UM novo veículo. Se o veículo já existir, ele soma o valor ao valor original. */
 void add_new_vehicle(int registration[][3], int counter[]);
-
-/* Retorna o valor do status dos cadastros. */
-int check_status_register(int counter[]);

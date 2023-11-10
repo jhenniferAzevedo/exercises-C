@@ -46,7 +46,7 @@ int main(void)
             break;
         
         case 5:
-            show_report_by_color_and_code(cadastro_veiculo, contador);
+            add_new_vehicle(cadastro_veiculo, contador);
             break;
 
         case 0:
