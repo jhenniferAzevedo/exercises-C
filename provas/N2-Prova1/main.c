@@ -23,59 +23,17 @@ int main(void)
     do
     {
         resp[0] = 0;
-        printf("\n\nOPCOES\n"
-               "(0) Finalizar programa \n"
-               "(1) Relatorio geral \n"
-               "(2) Relatorio por cor \n"
-               "(3) Relatorio por codigo \n"
-               "(4) Relatorio por veiculo \n"
-               "(5) Adicionar um veiculo \n");
+        menu_report();
         scanf("%d", &resp[0]);
 
         switch (resp[0])
         {
         case 1:
-            /*
-                mostre todos os veículos e seus dados;
-                mostre a quantidade total de veículos;
-                mostre a percentagem de ocupação das garagens;
-            */
-            for (n_veiculo = 0; n_veiculo < contador[total_cadastros]; n_veiculo++)
-            {
-                printf("\n\n>>> Cadastro %d\n"
-                       "Codigo do veiculo: %d\n"
-                       "Codigo da cor do veiculo: %d\n"
-                       "Quantidade do veiculo: %d\n",
-                       n_veiculo + 1,
-                       cadastro_veiculo[n_veiculo][codigo_veiculo],
-                       cadastro_veiculo[n_veiculo][cor],
-                       cadastro_veiculo[n_veiculo][qntd]);
-            }
-            printf("\n>>> Total de veiculos: %d", contador[total_veiculos]);
-
-            valor = calculate_garage_percentage(contador);
-            printf("\n>>> Porcentagem de ocupacao: %.2f%%\n", valor);
-            /* printf("\nTotal de veiculos: %d");
-            printf("\nPorcentagem de ocupacao da garagem: "); */
+            show_general_report(cadastro_veiculo, contador);
             break;
 
         case 2:
-            /*
-                mostre a quantidade total e todos os veículos desta cor
-            */
-            printf("Qual a cor que voce deseja conferir? ");
-            scanf("%d", &resp[0]);
-            printf("Quantidade total de veiculos: %d\n", contador[total_veiculos_por_cor]);
-            printf("\nTodos os veículos da cor X\n");
-            for (n_veiculo = 0; n_veiculo < contador[total_cadastros]; n_veiculo++)
-            {
-                printf("\nCadastro %d\n"
-                       "Codigo do veiculo: %d\n"
-                       "Quantidade do veiculo: %d\n",
-                       n_veiculo + 1,
-                       cadastro_veiculo[n_veiculo][codigo_veiculo],
-                       cadastro_veiculo[n_veiculo][qntd]);
-            }
+            show_report_by_color(cadastro_veiculo, contador);
             break;
 
         case 3:
