@@ -9,7 +9,7 @@
     const int code_vehicle = 1;
     const int amount = 2;
 
-    --> para o array *counter[4]*
+    --> para o array *counter[5]*
     const int total_registers = 0;      MAX 25
     const int total_vehicles = 1;       MAX 150
     const int vehicles_by_color = 2;
