@@ -35,11 +35,12 @@ destes relatórios:
   - mostre a percentagem de ocupação das garagens.
 
 - **Relatório por cor (dada a cor)**
-  - mostre a quantidade total e todos os veículos desta cor;
+  - mostre a quantidade total de veículos;
+  - mostre todos os veículos com essa cor e seus dados;
 
 - **Relatório por código (dado o código)**
   - mostre a quantidade total de veículos;
-  - mostre todos os veículos com o código e seus dados;
+  - mostre todos os veículos com esse código e seus dados;
 
 - **Relatório por veículo (dados o código do veículo e sua cor)**
   - mostre a quantidade por veículo.

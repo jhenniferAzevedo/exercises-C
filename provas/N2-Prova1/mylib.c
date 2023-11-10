@@ -64,10 +64,10 @@ void ask_color_code(int registration[][4], int n_register)
     menu_colors();
     printf("\n\tCodigo da cor do veiculo: ");
     scanf("%d", &registration[n_register][color]);
-    check_color_code(&registration[n_register][color], n_register);
+    check_color_code(&registration[n_register][color]);
 }
 
-void check_color_code(int *value_color, int n_register)
+void check_color_code(int *value_color)
 {
     const int color = 0;
     while (*value_color < 1 || *value_color > 4)
@@ -195,6 +195,19 @@ void add_to_existing_registration(int registration[][4], int *new_register, int 
     registration[old_register][amount] += new_amount;
 }
 
+void menu_register(int registration[][4], int i)
+{
+    const int color = 0, code_vehicle = 1, amount = 2;
+    printf("\n>>> Cadastro %d\n"
+                    "Codigo do veiculo: %d\n"
+                    "Codigo da cor do veiculo: %d\n"
+                    "Quantidade do veiculo: %d\n",
+                    i + 1,
+                    registration[i][code_vehicle],
+                    registration[i][color],
+                    registration[i][amount]);
+}
+
 void show_general_report(int registration[][4], int counter[])
 {
     const int total_vehicles = 1;
@@ -206,20 +219,12 @@ void show_general_report(int registration[][4], int counter[])
 
 void show_all_vehicles(int registration[][4], int counter[])
 {
-    const int total_registers = 0, amount = 2;
-    const int color = 0, code_vehicle = 1;
+    const int total_registers = 0;
     int i;
 
     for (i = 0; i < counter[total_registers]; i++)
     {
-        printf("\n\n>>> Cadastro %d\n"
-                "Codigo do veiculo: %d\n"
-                "Codigo da cor do veiculo: %d\n"
-                "Quantidade do veiculo: %d\n",
-                i + 1,
-                registration[i][code_vehicle],
-                registration[i][color],
-                registration[i][amount]);
+        menu_register(registration, i);
     }
 } 
 
@@ -241,6 +246,7 @@ void show_report_by_color(int registration[][4], int counter[])
     menu_colors();
     printf("\nDe qual cor? ");
     scanf("%d", &n_color);
+    check_color_code(&n_color);
 
     show_vehicles_by_color(registration, counter, n_color);
     count_vehicles_by_color(registration, counter, n_color);
@@ -251,22 +257,14 @@ void show_report_by_color(int registration[][4], int counter[])
 
 void show_vehicles_by_color(int registration[][4], int counter[], int n_color)
 {
-    const int total_registers = 0;
-    const int color = 0, code_vehicle = 1, amount = 2;
+    const int total_registers = 0, color = 0;
     int i;
 
     for (i = 0; i < counter[total_registers]; i++)
     {
         if (registration[i][color] == n_color)
         {
-            printf("\n>>> Cadastro %d\n"
-                    "Codigo do veiculo: %d\n"
-                    "Codigo da cor do veiculo: %d\n"
-                    "Quantidade do veiculo: %d\n",
-                    i + 1,
-                    registration[i][code_vehicle],
-                    registration[i][color],
-                    registration[i][amount]);
+           menu_register(registration, i);
         }
     }
 }
@@ -274,7 +272,7 @@ void show_vehicles_by_color(int registration[][4], int counter[], int n_color)
 void count_vehicles_by_color(int registration[][4], int counter[], int n_color)
 {
     const int total_registers = 0, vehicles_by_color = 2;
-    const int color = 0, code_vehicle = 1, amount = 2;
+    const int color = 0, amount = 2;
     int i;
     counter[vehicles_by_color] = 0;
     
@@ -287,6 +285,56 @@ void count_vehicles_by_color(int registration[][4], int counter[], int n_color)
     }
 }
 
+/* RELATÓRIO POR CÓDIGO */
+
+void show_report_by_code(int registration[][4], int counter[])
+{
+    const int total_vehicles = 1, vehicles_by_color = 2;
+    int n_code;
+    
+    printf("\nDe qual codigo? ");
+    scanf("%d", &n_code);
+
+    show_vehicles_by_code(registration, counter, n_code);
+    count_vehicles_by_code(registration, counter, n_code);
+
+    printf("\n>>> Total de veiculos: %d\n", counter[vehicles_by_color]);
+}
+
+void show_vehicles_by_code(int registration[][4], int counter[], int n_code)
+{
+    const int total_registers = 0, code_vehicle = 1;
+    int i;
+
+    for (i = 0; i < counter[total_registers]; i++)
+    {
+        if (registration[i][code_vehicle] == n_code)
+        {
+            menu_register(registration, i);
+        }
+    }
+}
+
+void count_vehicles_by_code(int registration[][4], int counter[], int n_code)
+{
+    const int total_registers = 0, vehicles_by_code = 3;
+    const int code_vehicle = 1, amount = 2;
+    int i;
+    counter[vehicles_by_code] = 0;
+
+    for (i = 0; i < counter[total_registers]; i++)
+    {
+        if (registration[i][code_vehicle] == n_code)
+        {
+            counter[vehicles_by_code] += registration[i][amount];
+        }
+    }
+}
+
+/* RELATÓRIO POR CÓDIGO E COR */
+
+
+
 void menu_report(void)
 {
     printf("\n\nOPCOES\n"
@@ -298,27 +346,19 @@ void menu_report(void)
             "(5) Adicionar um veiculo \n");
 }
 
-/* void main(void)
-{
+
+/* Todas as constantes utilizadas para facilitar o entendimento:
+
+    --> para o array *registration[][3]*
+    const int color = 0;
+    const int code_vehicle = 1;
+    const int amount = 2;
+    const int code_register = 3;
+
+    --> para o array *counter[4]*
+    const int total_registers = 0;      MAX 25
+    const int total_vehicles = 1;       MAX 150
     const int vehicles_by_color = 2;
     const int vehicles_by_code = 3;
-} */
-
-/*
-
-void count_vehicles_by_code(int registration[][3], int counter[], int n_code)
-{
-    const int amount = 2, vehicles_by_code = 3;
-    counter_max[vehicle_by_code] = 0;
-
-    for (i = 0; i < ; i++)
-    {
-        if (registration[i][code] == n_code)
-        {
-            counter_max[vehicle_by_color] += registration[i][amount];
-        }
-    }
-}
 */
-
 

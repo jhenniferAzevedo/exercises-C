@@ -37,11 +37,7 @@ int main(void)
             break;
 
         case 3:
-            printf("Qual o codigo que voce deseja conferir? ");
-            scanf("%d", &resp[0]);
-            /*
-                mostre a quantidade total e todos os veículos com o código e seus dados),
-            */
+            show_report_by_code(cadastro_veiculo, contador);
             break;
         
         case 4:

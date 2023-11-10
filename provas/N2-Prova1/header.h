@@ -17,10 +17,11 @@ void menu_colors(void);
 void ask_color_code(int registration[][4], int code_register);
 
 /* Verifica se o código da cor especificada é válido. Se não, pede para trocá-lo*/
-void check_color_code(int *value_color, int code_register);
+void check_color_code(int *value_color);
 
 /* Pergunta pro usuário qual é o código da cor. */
 int ask_how_many_vehicle(int registration[][4], int counter[], int *n_register);
+
 
 // RELATORIO GERAL
 
@@ -52,6 +53,8 @@ void check_existing_registrations(int registration[][4], int counter[], int *n_r
 /* Adiciona a quantidade de veículos digitada pelo usuário ao cadastro já existente. */
 void add_to_existing_registration(int registration[][4], int *new_register, int old_register);
 
+void menu_register(int registration[][4], int i);
+
 /* Mostra para o usuário o relatório geral. 
  * (todos os veiculos, quantidade total na garagem e percentagem de ocupação) */
 void show_general_report(int registration[][4], int counter[]);
@@ -71,21 +74,23 @@ void show_report_by_color(int registration[][4], int counter[]);
 /* Mostra todos os veículos que possuem a cor especificada. */
 void show_vehicles_by_color(int registration[][4], int counter[], int n_color);
 
-/* Conta a quantidade de carros da cor especificada que ha na garagem. */
+/* Conta a quantidade de veículos da cor especificada que ha na garagem. */
 void count_vehicles_by_color(int registration[][4], int counter[], int n_color);
 
 
 // RELATÓRIO POR CÓDIGO
 
+/* Mostra para o usuário o relátorio por código dos veículos. */
+void show_report_by_code(int registration[][4], int counter[]);
+
 /* Mostra todos os veículos que possuem o código especificado. */
-void show_vehicles_by_code(int registration[][4], int counter[]);
+void show_vehicles_by_code(int registration[][4], int counter[], int n_code);
+
+/* Conta a quantidade de veículos do codigo especificado que ha na garagem. */
+void count_vehicles_by_code(int registration[][4], int counters[], int n_code);
 
 
-
-
-/* Conta a quantidade de carros do codigo especificado que ha na garagem. */
-void count_vehicles_by_code(int registration[][4], int counters_max[], int code_register);
-
+// RELATÓRIO POR CÓDIGO E COR
 
 /* Mostra o menu nos relatórios. */
 void menu_report(void);
@@ -99,20 +104,11 @@ void menu_report(void);
 
 void inserir_um_novo_veiculo(int cadastro[][3], int *total_cadastros);
 
-int calcula_total_por_cor(int cadastro[][3], int total_cadastros);
-
-void mostra_cadastros_por_cor(int cadastro[][3], int total_cadastros);
-
 int calcula_total_por_codigo(int cadastro[][3], int total_cadastros);
 
 void mostra_cadastros_por_codigo(int cadastro[][3], int total_cadastros);
 
 int consultar_quantidade_cadastro(int cadastro[][3], int total_cadastros, int codigo_veiculo, int cor_veiculo);
-
-
-
-
-
 
 
 
