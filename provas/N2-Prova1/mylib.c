@@ -32,7 +32,8 @@ void read_data(int registration[][3], int counter[])
 {
     const int total_registers = 0;
     int n_register = 0, result;
-    do {
+    do
+    {
         printf("\n\tCADASTRO (%d)\n", n_register + 1);
         ask_vehicle_code(registration, n_register);
         ask_color_code(registration, n_register);
@@ -77,7 +78,6 @@ void check_color_code(int *value_color)
         scanf("%d", value_color);
     }
 }
-
 
 int ask_how_many_vehicle(int registration[][3], int counter[], int *n_register)
 {
@@ -142,7 +142,7 @@ int error_handling_of_max_amount(int registration[][3], int counter[], int *n_re
             status = 2;
         }
     }
-    
+
     int result = show_message_by_status_garage(registration, counter, n_register, status);
     return result;
 }
@@ -155,7 +155,7 @@ int check_status_garage(int counter[])
     {
         return 0;
     }
-    
+
     if (counter[total_vehicles] == 150)
     {
         return 1;
@@ -168,7 +168,7 @@ int show_message_by_status_garage(int registration[][3], int counter[], int *n_r
 {
     const int total_vehicles = 1;
     int result = 0, value;
-    
+
     switch (status)
     {
     case 0:
@@ -177,17 +177,18 @@ int show_message_by_status_garage(int registration[][3], int counter[], int *n_r
                "(1) sim \n");
         scanf("%d", &result);
         break;
-    
+
     case 1:
         printf("\nValor maximo de veiculos na garagem alcancado.\n"
                "Encerrando cadastro dos veiculos...\n");
         system("pause");
         break;
-    
+
     case 2:
         value = 150 - counter[total_vehicles];
         printf("\n\tValor nao permitido!"
-               "\n\tPor favor, digite um valor entre 1 e %d\n", value);
+               "\n\tPor favor, digite um valor entre 1 e %d\n",
+               value);
         result = ask_how_many_vehicle(registration, counter, n_register);
     }
     return result;
@@ -238,7 +239,7 @@ void show_all_vehicles(int registration[][3], int counter[])
     {
         menu_register(registration, i);
     }
-} 
+}
 
 float calculate_garage_percentage(int counter[])
 {
@@ -254,7 +255,7 @@ void show_report_by_color(int registration[][3], int counter[])
 {
     const int vehicles_by_color = 2;
     int n_color;
-    
+
     menu_colors();
     printf("\nDe qual cor? ");
     scanf("%d", &n_color);
@@ -275,7 +276,7 @@ void show_vehicles_by_color(int registration[][3], int counter[], int n_color)
     {
         if (registration[i][color] == n_color)
         {
-           menu_register(registration, i);
+            menu_register(registration, i);
         }
     }
 }
@@ -286,7 +287,7 @@ void count_vehicles_by_color(int registration[][3], int counter[], int n_color)
     const int color = 0, amount = 2;
     int i;
     counter[vehicles_by_color] = 0;
-    
+
     for (i = 0; i < counter[total_registers]; i++)
     {
         if (registration[i][color] == n_color)
@@ -302,7 +303,7 @@ void show_report_by_code(int registration[][3], int counter[])
 {
     const int vehicles_by_code = 3;
     int n_code;
-    
+
     printf("\nDe qual codigo? ");
     scanf("%d", &n_code);
 
@@ -315,7 +316,7 @@ void show_report_by_code(int registration[][3], int counter[])
 void show_vehicles_by_code(int registration[][3], int counter[], int n_code)
 {
     const int total_registers = 0, code_vehicle = 1;
-    int i, no_code = 0;
+    int i;
 
     for (i = 0; i < counter[total_registers]; i++)
     {
@@ -348,7 +349,7 @@ void show_report_by_color_and_code(int registration[][3], int counter[])
 {
     int n_color;
     int n_code;
-    
+
     menu_colors();
     printf("\nDe qual cor? ");
     scanf("%d", &n_color);
@@ -366,7 +367,7 @@ void find_register(int registration[][3], int counter[], int n_color, int n_code
     const int code_vehicle = 1, color = 0;
     const int vehicles_by_color_and_code = 4;
     counter[vehicles_by_color_and_code] = 0;
-    int i, no_code = 0;
+    int i;
 
     for (i = 0; i < counter[total_registers]; i++)
     {
@@ -386,8 +387,9 @@ void add_new_vehicle(int registration[][3], int counter[])
 {
     const int total_registers = 0, amount = 2;
     int n_register = counter[total_registers];
-    int status = check_status_garage;
-    if (n_register < 25) 
+    int status = check_status_garage(counter);
+
+    if (n_register < 25 && status == 0)
     {
         printf("\n\tCadastro %d\n", n_register + 1);
         ask_vehicle_code(registration, n_register);
@@ -395,14 +397,13 @@ void add_new_vehicle(int registration[][3], int counter[])
         registration[n_register][amount] = 1;
         check_existing_registrations(registration, counter, &n_register);
         n_register++;
-    } 
-    else 
+    }
+    else
     {
         printf("\n\tNumero maximo de registros alcancado.\n");
     }
     counter[total_registers] = n_register;
 }
-
 
 /* Todas as constantes utilizadas para facilitar o entendimento:
 
