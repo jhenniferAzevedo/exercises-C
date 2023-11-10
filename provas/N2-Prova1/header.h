@@ -5,31 +5,39 @@ void init_array(int array[], int size);
 // LEITURAS
 
 /* Lê todos os dados dos cadastros registrados. */
-void read_data(int registration[][4], int counter[]);
+void read_data(int registration[][3], int counter[]);
 
 /* Pergunta pro usuário qual é o código do veículo. */
-void ask_vehicle_code(int registration[][4], int code_register);
+void ask_vehicle_code(int registration[][3], int code_register);
 
 /* Mostra o menu de códigos das cores disponíveis. */
 void menu_colors(void);
 
 /* Pergunta pro usuário qual é o código da cor. */
-void ask_color_code(int registration[][4], int code_register);
+void ask_color_code(int registration[][3], int code_register);
 
 /* Verifica se o código da cor especificada é válido. Se não, pede para trocá-lo*/
 void check_color_code(int *value_color);
 
 /* Pergunta pro usuário qual é o código da cor. */
-int ask_how_many_vehicle(int registration[][4], int counter[], int *n_register);
+int ask_how_many_vehicle(int registration[][3], int counter[], int *n_register);
 
 
-// RELATORIO GERAL
+// RELATÓRIOS
+
+/* Mostra o menu nos relatórios. */
+void menu_report(void);
+
+/* Mostra o cadatro e suas informações de acordo com o número do cadastro (i). */
+void menu_register(int registration[][3], int i);
+
+// 1. RELATORIO GERAL
 
 /* Adiciona o valor dititado pelo usuário para a quantidade total de carros que ha na garagem. */
-void count_total_vehicle(int registration[][4], int counter[], int *n_register);
+void count_total_vehicle(int registration[][3], int counter[], int *n_register);
 
 /* Faz todo o tratamento de erro para que o usuário não estoure o valor máximo de veículos permitido. */
-int error_handling_of_max_amount(int registration[][4], int counte[], int *n_register);
+int error_handling_of_max_amount(int registration[][3], int counte[], int *n_register);
 
 /* Retorna um valor de acordo com a quatidade de carros que há na garagem: 
  * Retorna 0, se o valor digitado ainda estiver abaixo do máximo permitido;
@@ -43,72 +51,65 @@ int check_status_garage(int counter[]);
  * Status 1, mostra mensagem de encerramento;
  * Status 3, pede para o usuario trocar o valor digitado, caso ultrapasse o máximo permitido;
  */
-int show_message_by_status_garage(int registration[][4], int counter[], int *n_register, int status);
+int show_message_by_status_garage(int registration[][3], int counter[], int *n_register, int status);
 
 /* Verifica se já existe algum cadastro com o mesmo código de veículo e da cor. 
  * Se houver, adiciona o valor digitado ao cadastro existente.
  */
-void check_existing_registrations(int registration[][4], int counter[], int *n_register);
+void check_existing_registrations(int registration[][3], int counter[], int *n_register);
 
 /* Adiciona a quantidade de veículos digitada pelo usuário ao cadastro já existente. */
-void add_to_existing_registration(int registration[][4], int *new_register, int old_register);
+void add_to_existing_registration(int registration[][3], int *new_register, int old_register);
 
-void menu_register(int registration[][4], int i);
 
 /* Mostra para o usuário o relatório geral. 
  * (todos os veiculos, quantidade total na garagem e percentagem de ocupação) */
-void show_general_report(int registration[][4], int counter[]);
+void show_general_report(int registration[][3], int counter[]);
 
 /* Mostra todos os cadastros de todos os veículos. */
-void show_all_vehicles(int registration[][4], int counter[]);
+void show_all_vehicles(int registration[][3], int counter[]);
 
 /* Retorna o valor da porcentagem de ocupação da garagem. */
 float calculate_garage_percentage(int counter[]);
 
 
-// RELATÓRIO POR COR
+// 2. RELATÓRIO POR COR
 
-/* Mostra para o usuário o relátorio por cor dos veículos. */
-void show_report_by_color(int registration[][4], int counter[]);
+/* Mostra para o usuário o relátorio dado a cor dos veículos. */
+void show_report_by_color(int registration[][3], int counter[]);
 
 /* Mostra todos os veículos que possuem a cor especificada. */
-void show_vehicles_by_color(int registration[][4], int counter[], int n_color);
+void show_vehicles_by_color(int registration[][3], int counter[], int n_color);
 
 /* Conta a quantidade de veículos da cor especificada que ha na garagem. */
-void count_vehicles_by_color(int registration[][4], int counter[], int n_color);
+void count_vehicles_by_color(int registration[][3], int counter[], int n_color);
 
 
-// RELATÓRIO POR CÓDIGO
+// 3. RELATÓRIO POR CÓDIGO
 
-/* Mostra para o usuário o relátorio por código dos veículos. */
-void show_report_by_code(int registration[][4], int counter[]);
+/* Mostra para o usuário o relátorio dado o código dos veículos. */
+void show_report_by_code(int registration[][3], int counter[]);
 
 /* Mostra todos os veículos que possuem o código especificado. */
-void show_vehicles_by_code(int registration[][4], int counter[], int n_code);
+void show_vehicles_by_code(int registration[][3], int counter[], int n_code);
 
 /* Conta a quantidade de veículos do codigo especificado que ha na garagem. */
-void count_vehicles_by_code(int registration[][4], int counters[], int n_code);
+void count_vehicles_by_code(int registration[][3], int counters[], int n_code);
 
 
-// RELATÓRIO POR CÓDIGO E COR
+// 4. RELATÓRIO POR CÓDIGO E COR
 
-/* Mostra o menu nos relatórios. */
-void menu_report(void);
+/* Mostra para o usuário o relátorio dado o código e a cor dos veículos. */
+void show_report_by_color_and_code(int registration[][3], int counter[]);
 
-
-
-
-
+/* Procura os dados registrados no valor do código e cor especificados e exibi-os.*/
+void find_register(int registration[][3], int counter[], int n_color, int n_code);
 
 
+// 5. 
 
-void inserir_um_novo_veiculo(int cadastro[][3], int *total_cadastros);
-
-int calcula_total_por_codigo(int cadastro[][3], int total_cadastros);
-
-void mostra_cadastros_por_codigo(int cadastro[][3], int total_cadastros);
-
-int consultar_quantidade_cadastro(int cadastro[][3], int total_cadastros, int codigo_veiculo, int cor_veiculo);
+/* Adiciona UM novo veículo. */
+void add_new_vehicle(int cadastro[][3], int *total_cadastros);
 
 
 

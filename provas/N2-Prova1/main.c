@@ -7,14 +7,15 @@ int main(void)
 {
     int n_veiculo = 0, resp[2];
 
-    int cadastro_veiculo[25][4],
-        cor = 0, codigo_veiculo = 1, qntd = 2, codigo_cadastro = 3;
+    int cadastro_veiculo[25][3],
+        cor = 0, codigo_veiculo = 1, qntd = 2;
 
-    int contador[4],
+    int contador[5],
         total_cadastros = 0,
         total_veiculos = 1,
         total_veiculos_por_cor = 2,
-        total_veiculos_por_codigo = 3;
+        total_veiculos_por_codigo = 3,
+        total_veiculos_por_codigo_e_cor = 4;
     init_array(contador, 4);
     read_data(cadastro_veiculo, contador);
 
@@ -41,15 +42,11 @@ int main(void)
             break;
         
         case 4:
-            printf("Qual o codigo que voce deseja conferir? ");
-            scanf("%d", &resp[codigo_veiculo]);
-            printf("E qual cor? ");
-            scanf("%d", &resp[cor]);
-            /*
-                busca por veículo (Dados o código do veículo e sua cor, mostre a quantidade.
-                Se o veículo for encontrado, a busca deve ser interrompida).
-            */
-            /* printf("total: %d\n", cadastro_veiculo[resp[]][--resp]); */
+            show_report_by_color_and_code(cadastro_veiculo, contador);
+            break;
+        
+        case 5:
+            show_report_by_color_and_code(cadastro_veiculo, contador);
             break;
 
         case 0:
