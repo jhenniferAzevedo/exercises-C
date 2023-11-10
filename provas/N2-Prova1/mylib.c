@@ -4,7 +4,7 @@
 
 /* Todas as constantes utilizadas para facilitar o entendimento:
 
-    --> para o array *registration[][3]*
+    --> para o array *registration[25][3]*
     const int color = 0;
     const int code_vehicle = 1;
     const int amount = 2;
@@ -404,19 +404,3 @@ void add_new_vehicle(int registration[][3], int counter[])
     }
     counter[total_registers] = n_register;
 }
-
-/* Todas as constantes utilizadas para facilitar o entendimento:
-
-    --> para o array *registration[][3]*
-    const int color = 0;
-    const int code_vehicle = 1;
-    const int amount = 2;
-    const int code_register = 3;
-
-    --> para o array *counter[4]*
-    const int total_registers = 0;      MAX 25
-    const int total_vehicles = 1;       MAX 150
-    const int vehicles_by_color = 2;
-    const int vehicles_by_code = 3;
-    const int vehicles_by_color_and_code = 4;
-*/

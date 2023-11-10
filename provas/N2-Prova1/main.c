@@ -1,7 +1,11 @@
-#include <stdio.h>
 #include "header.h"
+#include <stdio.h>
+/* #include <stdlib.h> */
 
-/* Sem usar variável global. */
+/* Sem usar variável global. 
+ * Terminar de colocar os "error handling" 
+ * e tentar reduzir as funções. 
+ */
 
 int main(void)
 {
@@ -9,10 +13,9 @@ int main(void)
     init_array(contador, 4);
     read_data(cadastro_veiculo, contador);
 
-    float valor;
-
     do
     {
+        /* system("cls"); */
         menu_report();
         scanf("%d", &resp);
 
@@ -20,22 +23,27 @@ int main(void)
         {
         case 1:
             show_general_report(cadastro_veiculo, contador);
+            /* system("pause"); */
             break;
 
         case 2:
             show_report_by_color(cadastro_veiculo, contador);
+            /* system("pause"); */
             break;
 
         case 3:
             show_report_by_code(cadastro_veiculo, contador);
+            /* system("pause"); */
             break;
         
         case 4:
             show_report_by_color_and_code(cadastro_veiculo, contador);
+            /* system("pause"); */
             break;
         
         case 5:
             add_new_vehicle(cadastro_veiculo, contador);
+            /* system("pause"); */
             break;
 
         case 0:
@@ -43,6 +51,7 @@ int main(void)
             break;
         default:
             printf("\nValor invalido! \nDigite um numero valo.\n");
+            /* system("pause"); */
             break;
         }
     } while (resp != 0);
