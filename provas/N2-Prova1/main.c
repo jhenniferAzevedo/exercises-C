@@ -58,17 +58,3 @@ int main(void)
         }
     } while (resp[0] != 0);
 }
-
-/*  Ideia: 
- *  para conferir se já existe um código de veículo com a mesma cor, 
- *  criar um novo código que será a junção entre o código do veículo
- *  e o código da cor. 
- *  
- *  Exemplo:
- *  codigo do veiculo 1342 
- *  codigo da cor 4
- *  codigo do cadastro 13424
- *  
- *  Se houver outro 13424, ele conta como sendo o mesmo cadastro e soma
- *  a quantidade pra esse código específico.
- */
