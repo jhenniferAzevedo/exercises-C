@@ -75,7 +75,7 @@ float calculate_garage_percentage(int counter[]);
 
 // 2. RELATÓRIO POR COR
 
-/* Mostra para o usuário o relátorio dado a cor dos veículos. */
+/* Mostra para o usuário um relátorio, dado a cor dos veículos. */
 void show_report_by_color(int registration[][3], int counter[]);
 
 /* Mostra todos os veículos que possuem a cor especificada. */
@@ -87,7 +87,7 @@ void count_vehicles_by_color(int registration[][3], int counter[], int n_color);
 
 // 3. RELATÓRIO POR CÓDIGO
 
-/* Mostra para o usuário o relátorio dado o código dos veículos. */
+/* Mostra para o usuário um relátorio, dado o código dos veículos. */
 void show_report_by_code(int registration[][3], int counter[]);
 
 /* Mostra todos os veículos que possuem o código especificado. */
@@ -99,17 +99,17 @@ void count_vehicles_by_code(int registration[][3], int counters[], int n_code);
 
 // 4. RELATÓRIO POR CÓDIGO E COR
 
-/* Mostra para o usuário o relátorio dado o código e a cor dos veículos. */
+/* Mostra para o usuário um relátorio, dado o código e a cor dos veículos. */
 void show_report_by_color_and_code(int registration[][3], int counter[]);
 
-/* Procura os dados registrados no valor do código e cor especificados e exibi-os.*/
+/* Procura os dados registrados no valor do código e cor especificados e exíbi-os.*/
 void find_register(int registration[][3], int counter[], int n_color, int n_code);
 
 
-// 5. 
+// 5. INSERIR NOVO VEÍCULO
 
 /* Adiciona UM novo veículo. */
-void add_new_vehicle(int cadastro[][3], int *total_cadastros);
+void add_new_vehicle(int registration[][3], int counter[]);
 
-
-
+/* Retorna o valor do status dos cadastros. */
+int check_status_register(int counter[]);

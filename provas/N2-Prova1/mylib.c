@@ -149,6 +149,25 @@ int error_handling_of_max_amount(int registration[][3], int counter[], int *n_re
     return result;
 }
 
+/* test */
+
+int check_status_register(int counter[])
+{
+    const int total_registers = 0;
+
+    if (counter[total_registers] < 25)
+    {
+        return 0;
+    }
+    
+    if (counter[total_registers] == 25)
+    {
+        return 1;
+    }
+
+    return 2;
+}
+
 int check_status_garage(int counter[])
 {
     const int total_vehicles = 1;
@@ -174,7 +193,7 @@ int show_message_by_status_garage(int registration[][3], int counter[], int *n_r
     switch (status)
     {
     case 0:
-        printf("\nAdicionar novo veiculo? \n"
+        printf("\nAdicionar mais algum novo veiculo? \n"
                "(0) nao \n"
                "(1) sim \n");
         scanf("%d", &result);
@@ -383,6 +402,13 @@ void find_register(int registration[][3], int counter[], int n_color, int n_code
     }
 }
 
+/* 5. INSERIR NOVO VEÍCULO */
+
+void add_new_vehicle(int registration[][3], int counter[])
+{
+
+    /* ask_vehicle_code(registration, n_register); */
+}
 
 
 /* Todas as constantes utilizadas para facilitar o entendimento:
