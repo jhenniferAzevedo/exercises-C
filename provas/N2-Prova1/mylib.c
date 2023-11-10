@@ -49,15 +49,6 @@ void ask_vehicle_code(int registration[][4], int n_register)
     scanf("%d", &registration[n_register][code_vehicle]);
 }
 
-void ask_color_code(int registration[][4], int n_register)
-{
-    const int color = 0;
-    menu_colors();
-    printf("\n\tCodigo da cor do veiculo: ");
-    scanf("%d", &registration[n_register][color]);
-    check_color_code(registration, n_register);
-}
-
 void menu_colors(void)
 {
     printf("\n\tCores disponiveis \n"
@@ -67,17 +58,24 @@ void menu_colors(void)
             "\t(4) cinza \n");
 }
 
-void check_color_code(int registration[][4], int code_register)
+void ask_color_code(int registration[][4], int n_register)
 {
     const int color = 0;
-    int value = registration[code_register][color];
-    while (value < 1 || value > 4)
+    menu_colors();
+    printf("\n\tCodigo da cor do veiculo: ");
+    scanf("%d", &registration[n_register][color]);
+    check_color_code(&registration[n_register][color], n_register);
+}
+
+void check_color_code(int *value_color, int n_register)
+{
+    const int color = 0;
+    while (*value_color < 1 || *value_color > 4)
     {
         printf("\n\tEsse valor e invalido! \n"
                "\tPor favor, digite um numero valido. \n\n"
                "\tCodigo da cor do veiculo: ");
-        scanf("%d", &registration[code_register][color]);
-        value = registration[code_register][color];
+        scanf("%d", value_color);
     }
 }
 

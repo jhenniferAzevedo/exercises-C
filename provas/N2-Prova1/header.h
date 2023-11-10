@@ -10,14 +10,14 @@ void read_data(int registration[][4], int counter[]);
 /* Pergunta pro usuário qual é o código do veículo. */
 void ask_vehicle_code(int registration[][4], int code_register);
 
-/* Pergunta pro usuário qual é o código da cor. */
-void ask_color_code(int registration[][4], int code_register);
-
 /* Mostra o menu de códigos das cores disponíveis. */
 void menu_colors(void);
 
-/* Verifica se o código da cor digitado pelo usuário é válido. */
-void check_color_code(int registration[][4], int code_register);
+/* Pergunta pro usuário qual é o código da cor. */
+void ask_color_code(int registration[][4], int code_register);
+
+/* Verifica se o código da cor especificada é válido. Se não, pede para trocá-lo*/
+void check_color_code(int *value_color, int code_register);
 
 /* Pergunta pro usuário qual é o código da cor. */
 int ask_how_many_vehicle(int registration[][4], int counter[], int *n_register);
