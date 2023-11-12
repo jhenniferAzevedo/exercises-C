@@ -4,6 +4,7 @@
 int main(void)
 {
     order_data cliente[MAX_CLIENT];
+    reply_data resp;
     return 0;
 }
 
