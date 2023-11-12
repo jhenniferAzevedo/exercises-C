@@ -89,34 +89,6 @@ int ask_how_many_vehicle(int registration[][3], int counter[], int *n_register)
     return result;
 }
 
-/* RELATÓRIOS */
-
-void menu_report(void)
-{
-    printf("\n\nOPCOES\n"
-           "(0) Finalizar programa \n"
-           "(1) Relatorio geral \n"
-           "(2) Relatorio por cor \n"
-           "(3) Relatorio por codigo \n"
-           "(4) Relatorio por veiculo \n"
-           "(5) Adicionar um veiculo \n");
-}
-
-void menu_register(int registration[][3], int i)
-{
-    const int color = 0, code_vehicle = 1, amount = 2;
-    printf("\n>>> Cadastro %d\n"
-           "Codigo do veiculo: %d\n"
-           "Codigo da cor do veiculo: %d\n"
-           "Quantidade do veiculo: %d\n",
-           i + 1,
-           registration[i][code_vehicle],
-           registration[i][color],
-           registration[i][amount]);
-}
-
-/* 1. RELATÓRIO GERAL */
-
 void count_total_vehicle(int registration[][3], int counter[], int *n_register)
 {
     const int amount = 2, total_vehicles = 1;
@@ -220,6 +192,34 @@ void add_to_existing_registration(int registration[][3], int *new_register, int 
     int new_amount = registration[*new_register][amount];
     registration[old_register][amount] += new_amount;
 }
+
+/* RELATÓRIOS */
+
+void menu_report(void)
+{
+    printf("\n\nOPCOES\n"
+           "(0) Finalizar programa \n"
+           "(1) Relatorio geral \n"
+           "(2) Relatorio por cor \n"
+           "(3) Relatorio por codigo \n"
+           "(4) Relatorio por veiculo \n"
+           "(5) Adicionar um veiculo \n");
+}
+
+void menu_register(int registration[][3], int i)
+{
+    const int color = 0, code_vehicle = 1, amount = 2;
+    printf("\n>>> Cadastro %d\n"
+           "Codigo do veiculo: %d\n"
+           "Codigo da cor do veiculo: %d\n"
+           "Quantidade do veiculo: %d\n",
+           i + 1,
+           registration[i][code_vehicle],
+           registration[i][color],
+           registration[i][amount]);
+}
+
+/* 1. RELATÓRIO GERAL */
 
 void show_general_report(int registration[][3], int counter[])
 {

@@ -22,17 +22,6 @@ void check_color_code(int *value_color);
 /* Pergunta pro usuário qual é o código da cor. */
 int ask_how_many_vehicle(int registration[][3], int counter[], int *n_register);
 
-
-// RELATÓRIOS
-
-/* Mostra o menu nos relatórios. */
-void menu_report(void);
-
-/* Mostra o cadatro e suas informações de acordo com o número do cadastro (i). */
-void menu_register(int registration[][3], int i);
-
-// 1. RELATORIO GERAL
-
 /* Adiciona o valor dititado pelo usuário para a quantidade total de carros que ha na garagem. */
 void count_total_vehicle(int registration[][3], int counter[], int *n_register);
 
@@ -61,6 +50,17 @@ void check_existing_registrations(int registration[][3], int counter[], int *n_r
 /* Adiciona a quantidade de veículos digitada pelo usuário ao cadastro já existente. */
 void add_to_existing_registration(int registration[][3], int *new_register, int old_register);
 
+
+// RELATÓRIOS
+
+/* Mostra o menu nos relatórios. */
+void menu_report(void);
+
+/* Mostra o cadatro e suas informações de acordo com o número do cadastro (i). */
+void menu_register(int registration[][3], int i);
+
+
+// 1. RELATORIO GERAL
 
 /* Mostra para o usuário o relatório geral. 
  * (todos os veiculos, quantidade total na garagem e percentagem de ocupação) */
