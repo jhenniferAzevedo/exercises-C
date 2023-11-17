@@ -59,7 +59,8 @@
   "files.associations": {
     "stdio.h": "c",
     "ex01": "c",
-    "header.h": "c"
+    "header.h": "c",
+    "type_traits": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }

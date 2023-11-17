@@ -13,7 +13,7 @@ typedef struct order_data
         valor_do_frete;
 } order_data;
 
-/* Novo tipo para diminuir a quantidade de parâmetros nos procedimentos/funções de
+/* Novo tipo para diminuir a quantidade de parâmetros nos subprocedimentos de cada
  * formulário. */
 typedef struct reply_data
 {

@@ -43,7 +43,7 @@ int ask_what_products_user_wants(void)
 {
     int answer;
     show_product_available();
-    printf("\tQuais produtos voce deseja? \n"
+    printf("\tQuantos desses produtos voce deseja? \n"
            "\t(1) Apenas um dos produtos. \n"
            "\t(2) Dois dos produtos. \n"
            "\t(3) Todos os tres produtos. \n");
@@ -59,8 +59,20 @@ void check_answer(int *answer)
         printf("\n\tValor invalido!"
                "\n\tDigite um numero valido."
                "\n\tQual opcao voce deseja? ");
-        show_product_available();
         scanf("%d", answer);
+    }
+}
+
+int show_option_(int answer)
+{
+    switch (answer)
+    {
+    case 1:
+        return 1;
+        break;
+    
+    default:
+        break;
     }
 }
 
@@ -72,6 +84,7 @@ int check(order_data client[], int n_client, int n_order)
     switch (answer)
     {
     case 1:
+    /*
         printf("\tQual produto? ");
         scanf("%d", product1);
         check_answer(&answer);
@@ -79,10 +92,11 @@ int check(order_data client[], int n_client, int n_order)
         printf("\tQual a quantidade? ");
         scanf("%d", &client[n_client].qntd_do_produto[answer][n_order]);
 
-        /* ask_how_many_products1(); */
+        ask_how_many_products1(); 
         return;
-    
+    */
     case 2:
+    /*
         printf("\tQual e o primeiro produto? ");
         scanf("%d", &product1);
         check_answer(&product1);
@@ -97,15 +111,17 @@ int check(order_data client[], int n_client, int n_order)
         printf("\tQual a quantidade? ");
         scanf("%d", &amount1);
 
-        /* ask_how_many_products2(); */
+        ask_how_many_products2();
         return 2, product1, product2;
-    
+    */
     case 3:
+    /*
         check_answer(&product1);
         check_answer(&product2);
         check_answer(&product3);
-        /* ask_how_many_products3(); */
+        ask_how_many_products3();
         return 3;
+    */
     }
 }
 
