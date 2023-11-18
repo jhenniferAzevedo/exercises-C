@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    int n_aluno, n_turma, resp;
+    int resp;
     student_data aluno[MAX_ALUNOS][MAX_TURMAS];
     class_data turma[MAX_TURMAS];
 
@@ -20,28 +20,11 @@ int main(void)
         switch (resp)
         {
         case 1:
-            printf("\nQual e o numero da turma? ");
-            scanf("%d", &n_turma);
-            check_class(&n_turma);
-
-            printf("E qual e o numero do aluno? ");
-            scanf("%d", &n_aluno);
-            check_student(turma, &n_aluno, &n_turma);
-
-            n_aluno--;
-            n_turma--;
-            show_stutent_data(aluno, n_aluno, n_turma);
-            system("pause");
+            shows_query_per_student(aluno, turma);
             break;
         
         case 2:
-            printf("\nQual e o numero da turma? ");
-            scanf("%d", &n_turma);
-            check_class(&n_turma);
-
-            n_turma--;
-            show_class_data(turma, n_turma);
-            system("pause");
+            shows_query_per_class(turma);
             break;
         
         case 0:

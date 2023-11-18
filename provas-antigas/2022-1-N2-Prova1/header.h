@@ -89,3 +89,10 @@ void counts_substitute_test(student_data student[][MAX_TURMAS], class_data class
 
 /* Calcula o valor da média geral de cada um das turmas. */
 void calculate_class_average(student_data student[][MAX_TURMAS], class_data class[]);
+
+/* Mostra a consulta por aluno. */
+void shows_query_per_student(student_data student[][MAX_TURMAS], class_data class[]);
+
+void shows_query_per_class(class_data class[]);
+
+/* Mostra a consulta por turma. */
