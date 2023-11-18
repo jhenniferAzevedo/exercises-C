@@ -16,3 +16,13 @@ void move_left(int array[], int element)
     array[element - 1] = array[element];
     array[element] = change;
 }
+
+void print_array(int array[], int size)
+{
+    printf("a[10] = { ");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("}\n");
+}
