@@ -1,56 +1,32 @@
-#include "header.h"
 #include <stdio.h>
-#include <stdlib.h>
+// #include "header.h"
 
-int main(void)
+void test(int *);
+typedef struct name
 {
-    register_data cadastro_veiculo[25];
-    counter_data contador;
-    int resp;
+    int code;
+    int color;
+    int amount;
+} register_data;
 
-    init_array(contador, 5);
-    read_data(cadastro_veiculo, contador);
 
-    do
-    {
-        system("cls");
-        menu_report();
-        scanf("%d", &resp);
+int main(void) {
+    register_data car[10];
 
-        switch (resp)
-        {
-        case 1:
-            show_general_report(cadastro_veiculo, contador);
-            system("pause");
-            break;
+    printf("\n\tDigite um valor: ");
+    scanf("%d", &car[0].color);
+    test(&car[0].color);
+    printf("\tEncerrando...\n\n");
 
-        case 2:
-            show_report_by_color(cadastro_veiculo, contador);
-            system("pause");
-            break;
+    return 0;
+}
 
-        case 3:
-            show_report_by_code(cadastro_veiculo, contador);
-            system("pause");
-            break;
-        
-        case 4:
-            show_report_by_color_and_code(cadastro_veiculo, contador);
-            system("pause");
-            break;
-        
-        case 5:
-            add_new_vehicle(cadastro_veiculo, contador);
-            system("pause");
-            break;
-
-        case 0:
-            printf("\nFinalizando...\n");
-            break;
-        default:
-            printf("\nValor invalido! \nDigite um numero valo.\n");
-            system("pause");
-            break;
-        }
-    } while (resp != 0);
+void test(int *value_color) {
+    while (*value_color < 1 || *value_color > 4) {
+        printf("\n\tEsse valor e invalido! \n"
+               "\tPor favor, digite um numero valido. \n\n"
+               "\tCodigo da cor do veiculo: ");
+        scanf("%d", value_color);
+    }
+    return;
 }
