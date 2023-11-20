@@ -60,7 +60,8 @@
     "stdio.h": "c",
     "ex01": "c",
     "header.h": "c",
-    "type_traits": "c"
+    "type_traits": "c",
+    "inttypes.h": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }
