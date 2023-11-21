@@ -2,13 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void)
-{
+int main(void) {
+    int resp;
     register_data cadastro_veiculo[25];
     counter_data contador = {0};
-    int resp;
-
-    // init_counter_data(contador);
     read_data(cadastro_veiculo, &contador);
 
     do

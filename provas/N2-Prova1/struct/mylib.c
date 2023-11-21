@@ -2,15 +2,6 @@
 #include <stdlib.h>
 #include "header.h"
 
-// void init_counter_data(counter_data name_struct)
-// {
-//     name_struct.total_registers = 0;
-//     name_struct.total_vehicles = 0;
-//     name_struct.vehicles_by_code = 0;
-//     name_struct.vehicles_by_color = 0;
-//     name_struct.vehicles_by_code_and_color = 0;
-// }
-
 /* LEITURA DOS DADOS */
 
 void read_data(register_data registration[], counter_data *counter)

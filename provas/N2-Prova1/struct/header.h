@@ -1,6 +1,3 @@
-/* #define MAX_VEHICLES 150 */
-/* #define MAX_REGISTERS 25 */
-
 /* Novo tipo para armazenar os dados de cada cadastro. */
 typedef struct register_data
 {
@@ -16,10 +13,6 @@ typedef struct counter_data
         vehicles_by_color,
         vehicles_by_code_and_color;
 } counter_data;
-
-
-// /* Inicializa todas as variáveis contadoras com o valor zero. */
-// void init_counter_data(counter_data name_struct);
 
 
 // LEITURAS
