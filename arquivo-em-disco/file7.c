@@ -4,7 +4,7 @@
 int main(void) 
 {
     void copiarConteudo(FILE * test1, FILE *test2);
-    FILE *test1 = fopen("/home/jhennifer/Documentos/Repositories/exercises-C/testing/test1.txt", "r");
+    FILE *test1 = fopen("/home/jhennifer/Documentos/Repositories/exercises-C/arquivo-em-disco/test1.txt", "r");
 
     if (test1 == NULL) 
     {
