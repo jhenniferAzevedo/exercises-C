@@ -170,7 +170,6 @@ void add_to_existing_registration(register_data registration[],
     int *new_register, 
     int old_register)
 {
-    const int amount = 2;
     int new_amount = registration[*new_register].amount;
     registration[old_register].amount += new_amount;
 }
