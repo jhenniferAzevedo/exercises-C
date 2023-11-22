@@ -4,7 +4,8 @@
 
 /* LEITURA DOS DADOS */
 
-void read_data(register_data registration[], counter_data *counter)
+void read_data(register_data registration[], 
+    counter_data *counter)
 {
     int n_register = 0, result;
     do
@@ -18,7 +19,8 @@ void read_data(register_data registration[], counter_data *counter)
     counter->total_registers = n_register;
 }
 
-void ask_vehicle_code(register_data registration[], int n_register)
+void ask_vehicle_code(register_data registration[], 
+    int n_register)
 {
     printf("\tCodigo do veiculo: ");
     scanf("%d", &registration[n_register].code);
@@ -33,7 +35,8 @@ void menu_colors(void)
            "\t(4) cinza \n");
 }
 
-void ask_color_code(register_data registration[], int n_register)
+void ask_color_code(register_data registration[], 
+    int n_register)
 {
     menu_colors();
     printf("\n\tCodigo da cor do veiculo: ");
@@ -52,7 +55,9 @@ void check_color_code(int *value_color)
     }
 }
 
-int ask_how_many_vehicle(register_data registration[], counter_data *counter, int *n_register)
+int ask_how_many_vehicle(register_data registration[], 
+    counter_data *counter, 
+    int *n_register)
 {
     int result;
     printf("\tQuantidade de veiculos: ");
@@ -61,12 +66,16 @@ int ask_how_many_vehicle(register_data registration[], counter_data *counter, in
     return result;
 }
 
-void count_total_vehicle(register_data registration[], counter_data *counter, int *n_register)
+void count_total_vehicle(register_data registration[], 
+    counter_data *counter, 
+    int *n_register)
 {
     counter->total_vehicles += registration[*n_register].amount;
 }
 
-int error_handling_of_max_amount(register_data registration[], counter_data *counter, int *n_register)
+int error_handling_of_max_amount(register_data registration[], 
+    counter_data *counter, 
+    int *n_register)
 {
     int status = check_status_garage(counter);
     int amount_register = registration[*n_register].amount;
@@ -104,7 +113,10 @@ int check_status_garage(counter_data *counter)
     return 2;
 }
 
-int show_message_by_status_garage(register_data registration[], counter_data *counter, int *n_register, int status)
+int show_message_by_status_garage(register_data registration[], 
+    counter_data *counter, 
+    int *n_register, 
+    int status)
 {
     int result = 0, value;
 
@@ -133,7 +145,9 @@ int show_message_by_status_garage(register_data registration[], counter_data *co
     return result;
 }
 
-void check_existing_registrations(register_data registration[], counter_data *counter, int *n_register)
+void check_existing_registrations(register_data registration[], 
+    counter_data *counter, 
+    int *n_register)
 {
     int new_code1 = registration[*n_register].code;
     int new_code2 = registration[*n_register].color;
@@ -152,7 +166,9 @@ void check_existing_registrations(register_data registration[], counter_data *co
     }
 }
 
-void add_to_existing_registration(register_data registration[], int *new_register, int old_register)
+void add_to_existing_registration(register_data registration[], 
+    int *new_register, 
+    int old_register)
 {
     const int amount = 2;
     int new_amount = registration[*new_register].amount;
@@ -186,7 +202,8 @@ void menu_register(register_data registration[], int i)
 
 /* 1. RELATÓRIO GERAL */ 
 
-void show_general_report(register_data registration[], counter_data *counter)
+void show_general_report(register_data registration[], 
+    counter_data *counter)
 {
     show_all_vehicles(registration, counter);
     printf("\n>>> Total de veiculos: %d", counter->total_vehicles);
@@ -194,7 +211,8 @@ void show_general_report(register_data registration[], counter_data *counter)
     printf("\n>>> Porcentagem de ocupacao: %.2f%%\n", value);
 }
 
-void show_all_vehicles(register_data registration[], counter_data *counter)
+void show_all_vehicles(register_data registration[], 
+    counter_data *counter)
 {
     for (int i = 0; i < counter->total_registers; i++)
     {
@@ -211,7 +229,8 @@ float calculate_garage_percentage(counter_data *counter)
 
 /* 2. RELATÓRIO POR COR */
 
-void show_report_by_color(register_data registration[], counter_data *counter)
+void show_report_by_color(register_data registration[], 
+    counter_data *counter)
 {
     int n_color;
 
@@ -226,7 +245,9 @@ void show_report_by_color(register_data registration[], counter_data *counter)
     printf("\n>>> Total de veiculos: %d", counter->vehicles_by_color);
 }
 
-void show_vehicles_by_color(register_data registration[], counter_data *counter, int n_color)
+void show_vehicles_by_color(register_data registration[], 
+    counter_data *counter, 
+    int n_color)
 {
     for (int i = 0; i < counter->total_registers; i++)
     {
@@ -237,7 +258,9 @@ void show_vehicles_by_color(register_data registration[], counter_data *counter,
     }
 }
 
-void count_vehicles_by_color(register_data registration[], counter_data *counter, int n_color)
+void count_vehicles_by_color(register_data registration[], 
+    counter_data *counter, 
+    int n_color)
 {
     counter->vehicles_by_color = 0;
     for (int i = 0; i < counter->total_registers; i++)
@@ -251,7 +274,8 @@ void count_vehicles_by_color(register_data registration[], counter_data *counter
 
 /* 3. RELATÓRIO POR CÓDIGO */
 
-void show_report_by_code(register_data registration[], counter_data *counter)
+void show_report_by_code(register_data registration[], 
+    counter_data *counter)
 {
     int n_code;
     printf("\nDe qual codigo? ");
@@ -263,7 +287,9 @@ void show_report_by_code(register_data registration[], counter_data *counter)
     printf("\n>>> Total de veiculos: %d\n", counter->vehicles_by_code);
 }
 
-void show_vehicles_by_code(register_data registration[], counter_data *counter, int n_code)
+void show_vehicles_by_code(register_data registration[], 
+    counter_data *counter, 
+    int n_code)
 {
     for (int i = 0; i < counter->total_registers; i++)
     {
@@ -274,7 +300,9 @@ void show_vehicles_by_code(register_data registration[], counter_data *counter, 
     }
 }
 
-void count_vehicles_by_code(register_data registration[], counter_data *counter, int n_code)
+void count_vehicles_by_code(register_data registration[], 
+    counter_data *counter, 
+    int n_code)
 {
     counter->vehicles_by_code = 0;
     for (int i = 0; i < counter->total_registers; i++)
@@ -288,7 +316,8 @@ void count_vehicles_by_code(register_data registration[], counter_data *counter,
 
 /* 4. RELATÓRIO POR CÓDIGO E COR */
 
-void show_report_by_color_and_code(register_data registration[], counter_data *counter)
+void show_report_by_color_and_code(register_data registration[], 
+    counter_data *counter)
 {
     int n_color;
     int n_code;
@@ -304,7 +333,10 @@ void show_report_by_color_and_code(register_data registration[], counter_data *c
     find_register(registration, counter, n_color, n_code);
 }
 
-void find_register(register_data registration[], counter_data *counter, int n_color, int n_code)
+void find_register(register_data registration[], 
+    counter_data *counter, 
+    int n_color, 
+    int n_code)
 {
     counter->vehicles_by_code_and_color = 0;
     for (int i = 0; i < counter->total_registers; i++)
@@ -321,7 +353,8 @@ void find_register(register_data registration[], counter_data *counter, int n_co
 
 /* 5. INSERIR NOVO VEÍCULO */
 
-void add_new_vehicle(register_data registration[], counter_data *counter)
+void add_new_vehicle(register_data registration[], 
+    counter_data *counter)
 {
     int n_register = counter->total_registers;
     int status = check_status_garage(counter);
