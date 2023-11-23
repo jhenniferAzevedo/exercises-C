@@ -160,6 +160,7 @@ void count_vegetables_per_producer(counters_data *counter,
 
 
 // RELATÓRIO DE ANÁLIDE DE ABASTECIMENTO
+/* --> parei aqui */
 
 void supply_analysis_report(counters_data *counter)
 {
@@ -176,7 +177,7 @@ show_total_vegetables(counters_data *counter)
 
 
 
-
+/*
 void check_weeks_without_delivery(counters_data *counter)
 {
     if (hortalicas_por_semana[alface][semana] == 0 &&
@@ -185,6 +186,7 @@ void check_weeks_without_delivery(counters_data *counter)
         semanas_sem_entrega++;
     }
 }
+*/
 
 /* Mostre a quantidade total de alface e de repolho entregues no período;
  * Se a quantidade total de hortaliças for inferior a 500, emita um sinal

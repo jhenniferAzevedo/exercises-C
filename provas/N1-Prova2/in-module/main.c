@@ -7,9 +7,9 @@ int main(void)
 {
     int op, semana, produtor, hortalica, alface = 0, repolho = 1, 
                          qnt_produtores, semanas_sem_entrega = 0;
-    int hortalicas_por_semana[2][QNT_MAX_SEMANAS] = {{0}};
-    int hortalicas_por_produtor[2][QNT_MAX_PRODUTORES] = {{0}};
-    int numero_de_entregas[2][QNT_MAX_PRODUTORES][QNT_MAX_SEMANAS];
+    int hortalicas_por_semana[2][MAX_SEMANAS] = {{0}};
+    int hortalicas_por_produtor[2][MAX_PRODUTORES] = {{0}};
+    int numero_de_entregas[2][MAX_PRODUTORES][MAX_SEMANAS];
     int cont_total_hortalicas = 0, total[2] = {0};
 
     /* Relatórios */
