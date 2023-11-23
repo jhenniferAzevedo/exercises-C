@@ -24,13 +24,11 @@ int main(void)
             break;
 
         case 0:
-            printf("\nFinalizando... \n");
+            printf("\nEncerrando o programa... \n");
             break;
         default:
             printf("\nvalor invalido! Digite um valor valido. \n");
         }
     } while (op);
-
-    printf("\nEncerrando o programa...\n");
     return 0;
 }

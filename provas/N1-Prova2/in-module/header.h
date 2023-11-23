@@ -1,5 +1,5 @@
-#define MAX_WEEK 15
-#define MAX_PRODUC 50
+#define MAX_WEEK 4
+#define MAX_PRODUC 2
 
 typedef struct counters_data
 {
