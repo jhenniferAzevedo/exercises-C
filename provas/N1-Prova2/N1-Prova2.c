@@ -72,7 +72,7 @@ int main(void)
         case 2:
             printf("De qual produtor? ");
             scanf("%d", &produtor);
-            printf("\n\t Relatorio do Produtor %d\n", produtor);
+            printf("\n\t> Relatorio do Produtor %d\n", produtor);
             printf("\tTotal de alfaces entregues: %d\n",
                    hortalicas_por_produtor[alface][produtor - 1]);
             printf("\tTotal de repolhos entregues: %d\n",

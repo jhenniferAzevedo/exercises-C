@@ -66,14 +66,41 @@ void ask_how_many_cabbage(counters_data *counter,
 }
 
 
+// RELATÓRIOS
+
+int menu_report()
+{
+    int answer;
+    printf("\n(0) Finalizar"
+           "\n(1) Relatorio por semana"
+           "\n(2) Relatorio por produtor"
+           "\n(3) Relatorio de analise de abastecimento \n"
+           "\nO que voce deseja? ");
+    scanf("%d", &answer);
+    check_answer(&answer);
+    return answer;
+}
+
+void check_answer(int *answer)
+{
+    while (*answer < 0 || *answer > 3)
+    {
+        printf("\nValor invalido!"
+               "\nPor favor, digite um valor entre 0 e 3."
+               "\nO que voce deseja? ");
+        scanf("%d", answer);
+    }
+}
+
 // RELATÓRIO POR SEMANA 
 
 void report_per_week(counters_data counter)
 {
     int n_week = ask_which_week() - 1;
     count_vegetables_per_week(&counter, n_week);
-    printf("Total de alfaces: %d", counter.lettuce);
-    printf("Total de repolhos: %d", counter.cabbage);
+    printf("\n\t> Relatorio da Semana %d\n", ++n_week);
+    printf("\nTotal de alfaces: %d", counter.lettuce);
+    printf("\nTotal de repolhos: %d", counter.cabbage);
 }
 
 int ask_which_week()
@@ -90,9 +117,9 @@ void check_weeks(int *n_week)
     while (*n_week < 1 || *n_week > MAX_WEEK)
     {
         printf("\nValor invalido!"
-               "\nPor favor, digite um valor entre 1 e %d."
-               "\nDe qual semana? ", MAX_WEEK);
-        scanf("%d", n_week);
+               "\nPor favor, digite um valor entre 1 e %d.", 
+               MAX_WEEK);
+        ask_which_week();
     }
 }
 
@@ -110,19 +137,19 @@ void count_vegetables_per_week(counters_data *counter,
 
 void report_per_producer(counters_data counter)
 {
-    int lettuce, cabbage;
-    int n_producer = ask_which_producer() - 1;
+    int n_producer = ask_which_producer(counter) - 1;
     count_vegetables_per_producer(&counter, n_producer);
-    printf("Total de alfaces: %d", lettuce);
-    printf("Total de repolhos: %d", cabbage);
+    printf("\n\t> Relatorio do Produtor %d\n", ++n_producer);
+    printf("\nTotal de alfaces: %d", counter.lettuce);
+    printf("\nTotal de repolhos: %d", counter.cabbage);
 }
 
-int ask_which_producer()
+int ask_which_producer(counters_data counter)
 {
     int n_producer;
-    printf("\nDe qual semana? ");
+    printf("\nDe qual produtor? ");
     scanf("%d", &n_producer);
-    check_weeks(&n_producer);
+    check_producer(counter, &n_producer);
     return n_producer;
 }
 
@@ -132,9 +159,9 @@ void check_producer(counters_data counter,
     while (*n_producer < 1 || *n_producer > counter.producers)
     {
         printf("\nValor invalido!"
-               "\nPor favor, digite um valor entre 1 e %d."
-               "\nDe qual semana? ", counter.producers);
-        scanf("%d", n_producer);
+               "\nPor favor, digite um valor entre 1 e %d.",
+               counter.producers);
+        ask_which_producer(counter);
     }
 }
 
