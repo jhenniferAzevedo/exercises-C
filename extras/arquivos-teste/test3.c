@@ -7,7 +7,8 @@
 
 typedef struct counters_data
 {
-    int deliveries[2][MAX_WEEK];
+    int lettuce, cabbage,
+        deliveries[2][MAX_WEEK];
 } counters_data;
 
 void check_weeks(int *n_week)
@@ -30,21 +31,19 @@ int ask_which_week()
     return n_week;
 }
 
-int count_vegetables_per_week(counters_data counter,
+void count_vegetables_per_week(counters_data *counter,
     int n_week)
 {
-    int total_lettuce = counter.deliveries[0][n_week];
-    int total_cabbage = counter.deliveries[1][n_week];
-    return total_lettuce, total_cabbage;
+    counter->lettuce = counter->deliveries[0][n_week];
+    counter->cabbage = counter->deliveries[1][n_week];
 }
 
 void report_per_week(counters_data counter)
 {
-    int lettuce, cabbage;
     int n_week = ask_which_week() - 1;
-    lettuce, cabbage = count_vegetables_per_week(counter, n_week);
-    printf("\nTotal de alfaces: %d", lettuce);
-    printf("\nTotal de repolhos: %d \n", cabbage);
+    count_vegetables_per_week(&counter, n_week);
+    printf("\nTotal de alfaces: %d", counter.lettuce);
+    printf("\nTotal de repolhos: %d \n", counter.cabbage);
 }
 
 void preencher(counters_data *counter)
