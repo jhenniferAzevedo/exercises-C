@@ -1,49 +1,16 @@
 #include <stdio.h>
+#include "header.h"
 
-#define QNT_MAX_HORTALICAS 2
-#define QNT_MAX_SEMANAS 15
-#define QNT_MAX_PRODUTORES 50
+/* INCOMPLETE */
 
 int main(void)
 {
     int op, semana, produtor, hortalica, alface = 0, repolho = 1, 
                          qnt_produtores, semanas_sem_entrega = 0;
-    int hortalicas_por_semana[QNT_MAX_HORTALICAS][QNT_MAX_SEMANAS] = {{0}};
-    int hortalicas_por_produtor[QNT_MAX_HORTALICAS][QNT_MAX_PRODUTORES] = {{0}};
-    int numero_de_entregas[QNT_MAX_HORTALICAS][QNT_MAX_PRODUTORES][QNT_MAX_SEMANAS];
-    int cont_total_hortalicas = 0, total[QNT_MAX_HORTALICAS] = {0};
-
-    printf("Sao quantos produtores? ");
-    scanf("%d", &qnt_produtores);
-    for (semana = 0; semana < QNT_MAX_SEMANAS; semana++)
-    {
-        printf("\n* SEMANA %d *\n", semana + 1);
-        for (produtor = 0; produtor < qnt_produtores; produtor++)
-        {
-            printf("\n\t* PRODUTOR %d *\n", produtor + 1);
-            printf("\t> quantidade de alfaces: ");
-            scanf("%d", &numero_de_entregas[alface][produtor][semana]);
-            printf("\t> quantidade de repolhos: ");
-            scanf("%d", &numero_de_entregas[repolho][produtor][semana]);
-
-            /* Soma das variáveis contadoras de cada relatório */
-            for (hortalica = 0; hortalica < QNT_MAX_HORTALICAS; hortalica++)
-            {
-                hortalicas_por_semana[hortalica][semana] +=
-                    numero_de_entregas[hortalica][produtor][semana];
-                hortalicas_por_produtor[hortalica][produtor] +=
-                    numero_de_entregas[hortalica][produtor][semana];
-                total[hortalica] += numero_de_entregas[hortalica][produtor][semana];
-                cont_total_hortalicas += total[hortalica];
-            }
-        }
-
-        if (hortalicas_por_semana[alface][semana] == 0 &&
-            hortalicas_por_semana[repolho][semana] == 0)
-        {
-            semanas_sem_entrega++;
-        }
-    }
+    int hortalicas_por_semana[2][QNT_MAX_SEMANAS] = {{0}};
+    int hortalicas_por_produtor[2][QNT_MAX_PRODUTORES] = {{0}};
+    int numero_de_entregas[2][QNT_MAX_PRODUTORES][QNT_MAX_SEMANAS];
+    int cont_total_hortalicas = 0, total[2] = {0};
 
     /* Relatórios */
     do
