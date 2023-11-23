@@ -5,11 +5,12 @@
 
 int main(void)
 {
-    int op, semana, produtor, hortalica, alface = 0, repolho = 1, 
-                         qnt_produtores, semanas_sem_entrega = 0;
-    int hortalicas_por_semana[2][MAX_SEMANAS] = {{0}};
-    int hortalicas_por_produtor[2][MAX_PRODUTORES] = {{0}};
-    int numero_de_entregas[2][MAX_PRODUTORES][MAX_SEMANAS];
+    counters_data contador;
+    int op, semana, produtor, hortalica, alface = 0, repolho = 1,
+                                         qnt_produtores, semanas_sem_entrega = 0;
+    int hortalicas_por_semana[2][MAX_WEEK] = {{0}};
+    int hortalicas_por_produtor[2][MAX_PRODUC] = {{0}};
+    int numero_de_entregas[2][MAX_PRODUC][MAX_WEEK];
     int cont_total_hortalicas = 0, total[2] = {0};
 
     /* Relatórios */
@@ -47,30 +48,7 @@ int main(void)
             break;
 
         case 3:
-            printf("A quantidade total de alface e de repolho entregues neste "
-                   "periodo foi de %d alfaces e %d hortalicas.",
-                   total[alface], total[repolho]);
-            if (cont_total_hortalicas < 500)
-            {
-                printf("\nRisco de desabastecimento!");
-            }
-            else
-            {
-                if (total[alface] > 1300 || total[repolho] > 1200)
-                {
-                    printf("\nSuper producao!");
-                }
-            }
-
-            if (semanas_sem_entrega == 0)
-            {
-                printf("\nNao houve nenhuma semana sem entrega.\n");
-            }
-            else
-            {
-                printf("\nA quantidade de semanas sem entrega foi: %d\n",
-                       semanas_sem_entrega);
-            }
+            
             break;
 
         case 4:

@@ -20,18 +20,18 @@ void ask_how_many_producers(counters_data *counter)
 
 void check_how_many_producers(counters_data *counter)
 {
-    while (counter->producers < 1 || counter->producers > MAX_PRODUTORES)
+    while (counter->producers < 1 || counter->producers > MAX_PRODUC)
     {
         printf("\nValor invalido!"
                "\nPor favor, digite um valor entre 1 e %d.",
-               MAX_PRODUTORES);
+               MAX_PRODUC);
         ask_how_many_producers(counter);
     }
 }
 
 void read_data_by_week(counters_data *counter)
 {
-    for (int n_week = 0; n_week < MAX_SEMANAS; n_week++)
+    for (int n_week = 0; n_week < MAX_WEEK; n_week++)
     {
         printf("\n* SEMANA %d *\n", n_week + 1);
         read_data_by_producer(counter, n_week);
@@ -68,17 +68,15 @@ void ask_how_many_cabbage(counters_data *counter,
 
 // RELATÓRIO POR SEMANA 
 
-void report_per_week(counters_data *counter)
+void report_per_week(counters_data counter)
 {
-    int n_week = ask_which_week(counter) - 1;
-    count_vegetables_per_week(counter, n_week);
-    printf("Total de alfaces: %d", 
-        counter->vegetables_per_week[0][n_week]);
-    printf("Total de repolhos: %d", 
-        counter->vegetables_per_week[1][n_week]);
+    int n_week = ask_which_week() - 1;
+    count_vegetables_per_week(&counter, n_week);
+    printf("Total de alfaces: %d", counter.lettuce);
+    printf("Total de repolhos: %d", counter.cabbage);
 }
 
-int ask_which_week(counters_data *counter)
+int ask_which_week()
 {
     int n_week;
     printf("\nDe qual semana? ");
@@ -89,12 +87,11 @@ int ask_which_week(counters_data *counter)
 
 void check_weeks(int *n_week)
 {
-    while (*n_week < 1 || *n_week > MAX_SEMANAS)
+    while (*n_week < 1 || *n_week > MAX_WEEK)
     {
         printf("\nValor invalido!"
                "\nPor favor, digite um valor entre 1 e %d."
-               "\nDe qual semana? ",
-               MAX_SEMANAS);
+               "\nDe qual semana? ", MAX_WEEK);
         scanf("%d", n_week);
     }
 }
@@ -102,29 +99,25 @@ void check_weeks(int *n_week)
 void count_vegetables_per_week(counters_data *counter,
     int n_week)
 {
-    for (int n_producer = 0; n_producer < counter->producers; n_producer++)
+    for (int j = 0; j < counter->producers; j++)
     {
-        counter->vegetables_per_week[0][n_week] += 
-            counter->deliveries[0][n_week][n_producer];
-        counter->vegetables_per_week[1][n_week] += 
-            counter->deliveries[1][n_week][n_producer];
+        counter->lettuce += counter->deliveries[0][n_week][j];
+        counter->cabbage += counter->deliveries[1][n_week][j];
     }
 }
 
-
 // RELATÓRIO POR PRODUTOR 
 
-void report_per_producer(counters_data *counter)
+void report_per_producer(counters_data counter)
 {
-    int n_producer = ask_which_producer(counter) - 1;
-    count_vegetables_per_producer(counter, n_producer);
-    printf("Total de alfaces: %d", 
-        counter->vegetables_per_week[0][n_producer]);
-    printf("Total de repolhos: %d", 
-        counter->vegetables_per_week[1][n_producer]);
+    int lettuce, cabbage;
+    int n_producer = ask_which_producer() - 1;
+    count_vegetables_per_producer(&counter, n_producer);
+    printf("Total de alfaces: %d", lettuce);
+    printf("Total de repolhos: %d", cabbage);
 }
 
-int ask_which_week(counters_data *counter)
+int ask_which_producer()
 {
     int n_producer;
     printf("\nDe qual semana? ");
@@ -133,15 +126,14 @@ int ask_which_week(counters_data *counter)
     return n_producer;
 }
 
-void check_producer(counters_data *counter,
+void check_producer(counters_data counter,
      int *n_producer)
 {
-    while (*n_producer < 1 || *n_producer > counter->producers)
+    while (*n_producer < 1 || *n_producer > counter.producers)
     {
         printf("\nValor invalido!"
                "\nPor favor, digite um valor entre 1 e %d."
-               "\nDe qual semana? ",
-               counter->producers);
+               "\nDe qual semana? ", counter.producers);
         scanf("%d", n_producer);
     }
 }
@@ -149,44 +141,93 @@ void check_producer(counters_data *counter,
 void count_vegetables_per_producer(counters_data *counter,
     int n_producer)
 {
-    for (int n_week = 0; n_week < MAX_SEMANAS; n_week++)
+    for (int i = 0; i < MAX_WEEK; i++)
     {
-        counter->vegetables_per_producer[0][n_producer] += 
-            counter->deliveries[0][n_week][n_producer];
-        counter->vegetables_per_producer[1][n_producer] += 
-            counter->deliveries[1][n_week][n_producer];
+        counter->lettuce += counter->deliveries[0][i][n_producer];
+        counter->cabbage += counter->deliveries[1][i][n_producer];
     }
 }
 
 
-// RELATÓRIO DE ANÁLIDE DE ABASTECIMENTO
-/* --> parei aqui */
+// RELATÓRIO DA ANÁLIDE DE ABASTECIMENTO
 
-void supply_analysis_report(counters_data *counter)
+void report_per_supply_analysis(counters_data counter)
 {
+    count_total_vegetables(&counter);
+    show_total_vegetables(counter);
+    show_message_by_suply(counter);
+    show_message_by_weeks_without_delivery(counter);
 }
 
-void show_total_delivery(counters_data *counter)
+void count_total_vegetables(counters_data *counter)
 {
-}
-
-show_total_vegetables(counters_data *counter)
-{
-}
-
-
-
-
-/*
-void check_weeks_without_delivery(counters_data *counter)
-{
-    if (hortalicas_por_semana[alface][semana] == 0 &&
-        hortalicas_por_semana[repolho][semana] == 0)
+    for (int i = 0; i < MAX_WEEK; i++)
     {
-        semanas_sem_entrega++;
+        for (int j = 0; j < counter->producers; j++)
+        {
+            counter->lettuce += counter->deliveries[0][i][j];
+            counter->cabbage += counter->deliveries[1][i][j];
+        }
     }
 }
-*/
+
+void show_total_vegetables(counters_data counter)
+{
+    printf("A quantidade total de alface e de repolho entregues neste "
+           "periodo foi de %d alfaces e %d hortalicas.",
+           counter.lettuce, counter.lettuce);
+}
+
+void show_message_by_suply(counters_data counter)
+{
+    count_total_deliveries(&counter);
+    if (counter.total < 500)
+    {
+        printf("\nRisco de desabastecimento!");
+    }
+    else
+    {
+        if (counter.lettuce > 1300 || counter.cabbage > 1200)
+        {
+            printf("\nSuper producao!");
+        }
+    }
+}
+
+void count_total_deliveries(counters_data *counter)
+{
+    counter->total = counter->lettuce + counter->cabbage;
+}
+
+void show_message_by_weeks_without_delivery(counters_data counter)
+{
+    int without_delivery = count_weeks_without_delivery(counter);
+    
+    if (without_delivery)
+    {
+        printf("\nA quantidade de semanas sem entrega foi: "
+           "%d \n", without_delivery);
+        return;
+    }
+
+    printf("\nNao houve nenhuma semana sem entrega.\n");
+}
+
+int count_weeks_without_delivery(counters_data counter)
+{
+    int without_delivery = 0;
+
+    for (int i = 0; i < MAX_WEEK; i++)
+    {
+        count_vegetables_per_week(&counter, i);
+        if (counter.lettuce == 0 && counter.cabbage == 0)
+        {
+            without_delivery++;
+        }
+    }
+
+    return without_delivery;
+}
 
 /* Mostre a quantidade total de alface e de repolho entregues no período;
  * Se a quantidade total de hortaliças for inferior a 500, emita um sinal
@@ -195,13 +236,3 @@ void check_weeks_without_delivery(counters_data *counter)
  * for superior a 1200, emita um sinal de “Super produção”;
  * Diga também se houve alguma semana no período que não houve entregas.
  */
-
-/*
-    for (hortalica = 0; hortalica < QNT_MAX_HORTALICAS; hortalica++)
-    {
-        hortalicas_por_produtor[hortalica][produtor] +=
-            numero_de_entregas[hortalica][produtor][semana];
-        total[hortalica] += numero_de_entregas[hortalica][produtor][semana];
-        cont_total_hortalicas += total[hortalica];
-    }
-*/
