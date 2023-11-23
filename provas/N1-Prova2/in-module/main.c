@@ -34,21 +34,3 @@ int main(void)
     printf("\nEncerrando o programa...\n");
     return 0;
 }
-
-/* RELATORIOS
-- Relatório por semana: dado a semana, mostrar a quantidade de alface e de
-repolho entregues nesta semana.
-
-- Relatório por produtor: dado o produtor, mostrar a quantidade de alface e de
-repolho entregues no período por este produtor.
-
-- Relatório de análise de abastecimento:
-  * Mostre a quantidade total de alface e de repolho entregues no período.
-  * Se a quantidade total de hortaliças for inferior a 500, emita um sinal
-de “Risco de desabastecimento” Se a quantidade de alface for superior a 1300 ou
-a quantidade de repolho for superior a 1200, emita um sinal de “Super produção”
-  * Diga também se houve alguma semana no período que não houve entregas.
-
-Após imprimir um relatório, oferecer a opção para o usurário imprimir outro
-relatório se desejar.
-*/

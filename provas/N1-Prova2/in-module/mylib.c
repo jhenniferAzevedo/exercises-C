@@ -255,11 +255,3 @@ int count_weeks_without_delivery(counters_data counter)
 
     return without_delivery;
 }
-
-/* Mostre a quantidade total de alface e de repolho entregues no período;
- * Se a quantidade total de hortaliças for inferior a 500, emita um sinal
- * de “Risco de desabastecimento”;
- * Se a quantidade de alface for superior a 1300 ou a quantidade de repolho
- * for superior a 1200, emita um sinal de “Super produção”;
- * Diga também se houve alguma semana no período que não houve entregas.
- */
