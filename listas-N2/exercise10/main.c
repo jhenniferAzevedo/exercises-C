@@ -18,8 +18,7 @@ int main(void)
 
 int calcula(int x, int y)
 {
-    int change;
-    change = x;
+    int change = x;
     x = x + y;
     y = change - y;
     return x, y;
