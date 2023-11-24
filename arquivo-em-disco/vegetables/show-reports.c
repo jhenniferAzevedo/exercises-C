@@ -24,4 +24,3 @@ int main(void)
     show_reports(contador);
     return 0;
 }
-
