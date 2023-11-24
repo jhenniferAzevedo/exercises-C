@@ -5,6 +5,25 @@
 #define GREEN_TEXT "\x1b[32m"
 #define RESET_TEXT "\x1b[0m"
 
+// GUARDANDO NO ARQUIVO EM DISCO --> INCOMPLETE
+
+void read_file(counters_data counter)
+{
+    FILE *file = fopen("file-on-disk.out", "rb");
+
+    if (file != NULL)
+    {
+        fread(&counter, sizeof(counters_data), 1, file);
+    }
+    
+    fclose(file);
+}
+
+void write_file(counters_data counter)
+{
+    FILE *fptr = fopen("file-on-disk.out", "wb");
+}
+
 // LEITURA DOS DADOS
 
 void read_data(counters_data *counter)
