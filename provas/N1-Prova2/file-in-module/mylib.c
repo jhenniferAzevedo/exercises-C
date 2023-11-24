@@ -70,17 +70,43 @@ void ask_how_many_cabbage(counters_data *counter,
 
 // RELATÓRIOS
 
-int menu_report()
+void show_reports(counters_data counter)
 {
     int answer;
+    do {
+        menu_report();
+        printf("\nO que voce deseja fazer? ");
+        scanf("%d", &answer);
+        check_answer(&answer);
+        switch (answer)
+        {
+        case 1:
+            report_per_week(counter);
+            break;
+
+        case 2:
+            report_per_producer(counter);
+            break;
+
+        case 3:
+            report_per_supply_analysis(counter);
+            break;
+
+        case 0:
+            printf("\nEncerrando o programa... \n");
+            break;
+        default:
+            printf("\nvalor invalido! Digite um valor valido. \n");
+        }
+    } while (answer);
+}
+
+int menu_report()
+{
     printf("\n(0) Finalizar"
            "\n(1) Ver relatorio por semana"
            "\n(2) Ver relatorio por produtor"
-           "\n(3) Ver relatorio de analise de abastecimento \n"
-           "\nO que voce deseja? ");
-    scanf("%d", &answer);
-    check_answer(&answer);
-    return answer;
+           "\n(3) Ver relatorio de analise de abastecimento \n");
 }
 
 void check_answer(int *answer)

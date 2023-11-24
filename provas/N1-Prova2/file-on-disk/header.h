@@ -17,6 +17,7 @@ void ask_how_many_lettuce(counters_data *counter, int n_week, int n_producer);
 void ask_how_many_cabbage(counters_data *counter, int n_week, int n_producer);
 
 // RELATÓRIOS
+void show_reports(counters_data counter);
 int menu_report();
 void check_answer(int *answer);
 
