@@ -7,6 +7,10 @@ typedef struct counters_data
         deliveries[2][MAX_WEEK][MAX_PRODUC];
 } counters_data;
 
+// GUARDANDO NO ARQUIVO EM DISCO
+void read_file(counters_data counter);
+void write_file(counters_data counter);
+
 // LEITURA DOS DADOS
 void read_data(counters_data *counter);
 void ask_how_many_producers(counters_data *counter);
