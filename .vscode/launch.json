@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/jhennifer/Documentos/Repositories/exercises-C/provas/N1-Prova2/in-module",
-      "program": "/home/jhennifer/Documentos/Repositories/exercises-C/provas/N1-Prova2/in-module/build/Debug/outDebug",
+      "cwd": "/home/jhennifer/Documentos/Repositories/exercises-C/provas/N1-Prova2/file-in-module",
+      "program": "/home/jhennifer/Documentos/Repositories/exercises-C/provas/N1-Prova2/file-in-module/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
