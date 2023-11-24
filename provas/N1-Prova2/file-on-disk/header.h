@@ -1,15 +1,15 @@
 #define MAX_WEEK 4
 #define MAX_PRODUC 2
 
+#define RED_TEXT   "\x1b[31m"
+#define GREEN_TEXT "\x1b[32m"
+#define RESET_TEXT "\x1b[0m"
+
 typedef struct counters_data
 {
     int producers, lettuce, cabbage, total,
         deliveries[2][MAX_WEEK][MAX_PRODUC];
 } counters_data;
-
-// GUARDANDO NO ARQUIVO EM DISCO
-void read_file(counters_data counter);
-void write_file(counters_data counter);
 
 // LEITURA DOS DADOS
 void read_data(counters_data *counter);

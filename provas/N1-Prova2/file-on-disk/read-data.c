@@ -1,9 +1,26 @@
 #include <stdio.h>
 #include "header.h"
 
-int main(int argc, char const *argv[])
+int main(void)
 {
+    counters_data contador = {0};
+    read_data(&contador);
+
+    FILE *fptr = fopen("file-on-disk.out", "wb");
     
+    if (fptr == NULL)
+    {
+        printf(RED_TEXT 
+                "\nERROR: Arquivo inexistente.\n"
+               RESET_TEXT);
+        fclose(fptr);
+        return 1;
+    }
+
+    printf(GREEN_TEXT 
+            "\nArquivo salvo com sucesso!\n"
+            RESET_TEXT);
+    fwrite(&contador, sizeof(counters_data), 1, fptr);
+    fclose(fptr);
     return 0;
 }
-

@@ -1,29 +1,6 @@
 #include <stdio.h>
 #include "header.h"
 
-#define RED_TEXT   "\x1b[31m"
-#define GREEN_TEXT "\x1b[32m"
-#define RESET_TEXT "\x1b[0m"
-
-// GUARDANDO NO ARQUIVO EM DISCO --> INCOMPLETE
-
-void read_file(counters_data counter)
-{
-    FILE *file = fopen("file-on-disk.out", "rb");
-
-    if (file != NULL)
-    {
-        fread(&counter, sizeof(counters_data), 1, file);
-    }
-    
-    fclose(file);
-}
-
-void write_file(counters_data counter)
-{
-    FILE *fptr = fopen("file-on-disk.out", "wb");
-}
-
 // LEITURA DOS DADOS
 
 void read_data(counters_data *counter)
@@ -54,7 +31,7 @@ void read_data_by_week(counters_data *counter)
 {
     for (int n_week = 0; n_week < MAX_WEEK; n_week++)
     {
-        printf("\n* SEMANA %d *\n", n_week + 1);
+        printf("\nSEMANA %d\n", n_week + 1);
         read_data_by_producer(counter, n_week);
     }
 }
@@ -64,7 +41,7 @@ void read_data_by_producer(counters_data *counter,
 {
     for (int n_producer = 0; n_producer < counter->producers; n_producer++)
     {
-        printf("\n\t* PRODUTOR %d *\n", n_producer + 1);
+        printf("\n\tPRODUTOR %d\n", n_producer + 1);
         ask_how_many_lettuce(counter, n_week, n_producer);
         ask_how_many_cabbage(counter, n_week, n_producer);
     }
