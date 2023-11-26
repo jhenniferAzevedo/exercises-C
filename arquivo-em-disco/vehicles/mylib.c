@@ -202,6 +202,16 @@ void menu_register(register_data registration[], int i)
            registration[i].amount);
 }
 
+void check_vehicles(int amount)
+{
+    if (!amount)
+    {
+        printf(RED_TEXT "\nERROR: Cadastro inexistente!\n" RESET_TEXT);
+        return;
+    }
+    printf("\n>>> Total de veiculos: %d\n", amount);
+}
+
 void show_reports(register_data registration[], 
     counter_data *counter)
 {
@@ -285,8 +295,7 @@ void show_report_by_color(register_data registration[],
 
     show_vehicles_by_color(registration, counter, n_color);
     count_vehicles_by_color(registration, counter, n_color);
-
-    printf("\n>>> Total de veiculos: %d", counter->vehicles_by_color);
+    check_vehicles(counter->vehicles_by_color);
 }
 
 void show_vehicles_by_color(register_data registration[], 
@@ -327,8 +336,7 @@ void show_report_by_code(register_data registration[],
 
     show_vehicles_by_code(registration, counter, n_code);
     count_vehicles_by_code(registration, counter, n_code);
-
-    printf("\n>>> Total de veiculos: %d\n", counter->vehicles_by_code);
+    check_vehicles(counter->vehicles_by_code);
 }
 
 void show_vehicles_by_code(register_data registration[], 
@@ -371,7 +379,7 @@ void show_report_by_color_and_code(register_data registration[],
     scanf("%d", &n_color);
     check_color_code(&n_color);
 
-    printf("De qual codigo? ");
+    printf("\nDe qual codigo? ");
     scanf("%d", &n_code);
 
     find_register(registration, counter, n_color, n_code);
@@ -393,6 +401,7 @@ void find_register(register_data registration[],
             return;
         }
     }
+    check_vehicles(0);
 }
 
 /* 5. INSERIR NOVO VEÍCULO */

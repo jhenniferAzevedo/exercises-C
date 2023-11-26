@@ -30,7 +30,7 @@ int main(void)
                "> Código: %d \n"
                "> Cor: %d \n"
                "> Quantidade: %d \n", 
-               i, cadastros[i].code, 
+               i+1, cadastros[i].code, 
                cadastros[i].color, 
                cadastros[i].amount);
     }

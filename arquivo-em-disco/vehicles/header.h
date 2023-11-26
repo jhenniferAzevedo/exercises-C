@@ -53,6 +53,7 @@ void menu_report(int *answer);
 void menu_register(register_data registration[], int i);
 void show_reports(register_data registration[],
     counter_data *counter);
+void check_vehicles(int amount);
 
 
 // RELATORIO GERAL
