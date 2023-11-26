@@ -15,7 +15,7 @@ void read_data(register_data registration[],
         ask_color_code(registration, n_register);
         result = ask_how_many_vehicle(registration, counter, &n_register);
         n_register++;
-    } while (n_register < 25 && result != 0);
+    } while (n_register < 25 && result);
     counter->total_registers = n_register;
 }
 
@@ -81,7 +81,7 @@ int error_handling_of_max_amount(register_data registration[],
     int amount_register = registration[*n_register].amount;
     int max_counter = 150 - counter->total_vehicles;
 
-    if (status == 0)
+    if (!status)
     {
         if (amount_register >= 1 && amount_register <= max_counter)
         {
@@ -134,7 +134,6 @@ int show_message_by_status_garage(register_data registration[],
                "\nValor maximo de veiculos na garagem alcancado.\n"
                RESET_TEXT
                "Encerrando cadastro dos veiculos...\n");
-        system("pause");
         break;
 
     case 2:
@@ -151,15 +150,15 @@ void check_existing_registrations(register_data registration[],
     counter_data *counter, 
     int *n_register)
 {
-    int new_code1 = registration[*n_register].code;
-    int new_code2 = registration[*n_register].color;
+    int new_code = registration[*n_register].code;
+    int new_color = registration[*n_register].color;
     count_total_vehicle(registration, counter, n_register);
 
     for (int i = 0; i < *n_register; i++)
     {
-        int old_code1 = registration[i].code;
-        int old_code2 = registration[i].color;
-        if (new_code1 == old_code1 && new_code2 == old_code2)
+        int old_code = registration[i].code;
+        int old_color = registration[i].color;
+        if (new_code == old_code && new_color == old_color)
         {
             add_to_existing_registration(registration, n_register, i);
             *n_register = *n_register - 1;
@@ -192,7 +191,7 @@ void menu_report(int *answer)
 
 void menu_register(register_data registration[], int i)
 {
-    printf("\n>>> Cadastro %d\n"
+    printf(GREEN_TEXT "\n>>> Cadastro %d\n" RESET_TEXT
            "Codigo do veiculo: %d\n"
            "Codigo da cor do veiculo: %d\n"
            "Quantidade do veiculo: %d\n",
