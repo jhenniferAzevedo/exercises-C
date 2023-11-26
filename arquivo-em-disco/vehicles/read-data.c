@@ -17,11 +17,12 @@ int main()
     }
 
     read_data(cadastros, &contador);
+    fwrite(cadastros, sizeof(register_data), 25, fptr);
+    fwrite(&contador, sizeof(counter_data), 1, fptr);
+    
     printf(GREEN_TEXT 
             "\nArquivo salvo com sucesso!\n\n"
             RESET_TEXT);
-    fwrite(cadastros, sizeof(register_data), 25, fptr);
-    fwrite(&contador, sizeof(counter_data), 1, fptr);
     fclose(fptr);
     return 0;
 }

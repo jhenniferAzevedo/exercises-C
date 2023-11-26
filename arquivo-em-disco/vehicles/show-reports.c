@@ -23,6 +23,21 @@ int main()
     fread(&contador, sizeof(counter_data), 1, fptr);
     fclose(fptr);
 
+    int registros = contador.total_registers, 
+        veiculos = contador.total_vehicles;
     show_reports(cadastros, &contador);
+
+    if (registros != contador.total_registers ||
+            veiculos != contador.total_vehicles)
+    {
+        fptr = fopen("file-on-disk.out", "wb");
+        fwrite(cadastros, sizeof(register_data), 25, fptr);
+        fwrite(&contador, sizeof(counter_data), 1, fptr);
+        printf(GREEN_TEXT 
+            "Arquivo salvo com sucesso!\n\n"
+            RESET_TEXT);
+        fclose(fptr);
+    }
+    
     return 0;
 }
