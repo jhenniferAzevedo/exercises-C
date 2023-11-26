@@ -48,7 +48,7 @@ void check_color_code(int *value_color)
 {
     while (*value_color < 1 || *value_color > 4)
     {
-        printf("\n\tEsse valor e invalido! \n"
+        printf(RED_TEXT "\n\tEsse valor e invalido! \n" RESET_TEXT
                "\tPor favor, digite um numero valido. \n\n"
                "\tCodigo da cor do veiculo: ");
         scanf("%d", value_color);
@@ -130,14 +130,16 @@ int show_message_by_status_garage(register_data registration[],
         break;
 
     case 1:
-        printf("\nValor maximo de veiculos na garagem alcancado.\n"
+        printf(RED_TEXT 
+               "\nValor maximo de veiculos na garagem alcancado.\n"
+               RESET_TEXT
                "Encerrando cadastro dos veiculos...\n");
         system("pause");
         break;
 
     case 2:
         value = 150 - counter->total_vehicles;
-        printf("\n\tValor nao permitido!"
+        printf(RED_TEXT "\n\tValor nao permitido!" RESET_TEXT
                "\n\tPor favor, digite um valor entre 1 e %d\n",
                value);
         result = ask_how_many_vehicle(registration, counter, n_register);
@@ -176,7 +178,7 @@ void add_to_existing_registration(register_data registration[],
 
 /* RELATÓRIOS */
 
-void menu_report(void)
+void menu_report(int *answer)
 {
     printf("\n\nOPCOES\n"
            "(0) Finalizar programa \n"
@@ -185,6 +187,7 @@ void menu_report(void)
            "(3) Relatorio por codigo \n"
            "(4) Relatorio por veiculo \n"
            "(5) Adicionar um veiculo \n");
+    scanf("%d", answer);
 }
 
 void menu_register(register_data registration[], int i)
@@ -199,7 +202,49 @@ void menu_register(register_data registration[], int i)
            registration[i].amount);
 }
 
-/* 1. RELATÓRIO GERAL */ 
+void show_reports(register_data registration[], 
+    counter_data *counter)
+{
+    int answer;
+    do {
+        menu_report(&answer);
+        switch (answer)
+        {
+        case 1:
+            show_general_report(registration, counter);
+            break;
+
+        case 2:
+            show_report_by_color(registration, counter);
+            break;
+
+        case 3:
+            show_report_by_code(registration, counter);
+            break;
+        
+        case 4:
+            show_report_by_color_and_code(registration, counter);
+            break;
+        
+        case 5:
+            add_new_vehicle(registration, counter);
+            break;
+
+        case 0:
+            printf(GREEN_TEXT 
+                    "\nFinalizando...\n"
+                   RESET_TEXT);
+            break;
+        default:
+            printf(RED_TEXT
+                    "\nValor invalido! \nDigite um numero valo.\n"
+                   RESET_TEXT);
+            break;
+        }
+    } while (answer != 0);
+}
+
+/* RELATÓRIO GERAL */ 
 
 void show_general_report(register_data registration[], 
     counter_data *counter)
@@ -226,7 +271,7 @@ float calculate_garage_percentage(counter_data *counter)
     return value;
 }
 
-/* 2. RELATÓRIO POR COR */
+/* RELATÓRIO POR COR */
 
 void show_report_by_color(register_data registration[], 
     counter_data *counter)
@@ -271,7 +316,7 @@ void count_vehicles_by_color(register_data registration[],
     }
 }
 
-/* 3. RELATÓRIO POR CÓDIGO */
+/* RELATÓRIO POR CÓDIGO */
 
 void show_report_by_code(register_data registration[], 
     counter_data *counter)
@@ -313,7 +358,7 @@ void count_vehicles_by_code(register_data registration[],
     }
 }
 
-/* 4. RELATÓRIO POR CÓDIGO E COR */
+/* RELATÓRIO POR CÓDIGO E COR */
 
 void show_report_by_color_and_code(register_data registration[], 
     counter_data *counter)
@@ -369,7 +414,9 @@ void add_new_vehicle(register_data registration[],
     }
     else
     {
-        printf("\n\tNumero maximo de registros alcancado.\n");
+        printf(RED_TEXT
+                "\n\tNumero maximo de registros alcancado.\n"
+               RESET_TEXT);
     }
     counter->total_registers = n_register;
 }

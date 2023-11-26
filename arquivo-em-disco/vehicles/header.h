@@ -1,3 +1,7 @@
+#define RED_TEXT   "\x1b[31m"
+#define GREEN_TEXT "\x1b[32m"
+#define RESET_TEXT "\x1b[0m"
+
 typedef struct register_data
 {
     int code, color, amount;
@@ -45,8 +49,10 @@ void add_to_existing_registration(register_data registration[],
 
 
 // RELATÓRIOS
-void menu_report(void);
+void menu_report(int *answer);
 void menu_register(register_data registration[], int i);
+void show_reports(register_data registration[],
+    counter_data *counter);
 
 
 // RELATORIO GERAL
