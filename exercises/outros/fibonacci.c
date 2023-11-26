@@ -6,7 +6,7 @@ void fibonacci(int max)
     x[0] = 0;
     x[1] = 1;
     
-    printf("\n%s", "Sequencia fibonacci: {");
+    /* printf("\n%s", "Sequencia fibonacci: {");
     for (int i = 2; i < max; i++)
     {
         x[i] = x[i - 1] + x[i - 2];
@@ -16,6 +16,7 @@ void fibonacci(int max)
         }
         printf("%d.} \n", x[i]);
     }
+    */
 }
 
 /*

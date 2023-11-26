@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/jhennifer/Documentos/Repositories/exercises-C/arquivo-em-disco/example",
-      "program": "/home/jhennifer/Documentos/Repositories/exercises-C/arquivo-em-disco/example/build/Debug/outDebug",
+      "cwd": "/home/jhennifer/Documentos/Repositories/exercises-C/arquivo-em-disco/vegetables",
+      "program": "/home/jhennifer/Documentos/Repositories/exercises-C/arquivo-em-disco/vegetables/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
