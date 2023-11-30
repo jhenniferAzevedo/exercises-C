@@ -40,4 +40,4 @@ Leia para cada aluno:
   - mostre quantos farão prova substitutiva;
   - mostre qual é a média de notas geral da turma.
 
-Após imprimir um relatório, deve ser possível ao usuário imprimir outro caso queira.
+Após imprimir um relatório, deve ser possível ao usuário imprimir outro caso queira

@@ -18,9 +18,9 @@ int main(void)
 
     fread(&aluno, sizeof(student_data), 3 * 30, fptr);
     fread(&turma, sizeof(class_data), 3, fptr);
+
+    show_all_data(turma, aluno);
     fclose(fptr);
 
-    show_reports(turma, aluno);
     return 0;
 }
-

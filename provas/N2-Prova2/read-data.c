@@ -17,8 +17,8 @@ int main(void)
     }
 
     read_data(turma, aluno);
-    fwrite(aluno, sizeof(student_data), 3 * 30, fptr);
-    fwrite(turma, sizeof(class_data), 3, fptr);
+    fwrite(&aluno, sizeof(student_data), 3 * 30, fptr);
+    fwrite(&turma, sizeof(class_data), 3, fptr);
 
     printf(GREEN_TEXT 
             "\nArquivo salvo com sucesso!\n\n"

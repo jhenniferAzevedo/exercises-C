@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "mylib.h"
 
 // Leituras
@@ -20,9 +21,9 @@ void read_student_data(class_data class[], student_data student[][30], int n_cla
 
         printf("\tNome: ");
         scanf("%s", student[n_class][class[n_class].total_alunos].nome);
-        printf("\tFrequencia: ");
-        scanf("%d", &student[n_class][class[n_class].total_alunos].frequencia);
-        check_frequency(&student[n_class][class[n_class].total_alunos].frequencia);
+        printf("\tFaltas: ");
+        scanf("%d", &student[n_class][class[n_class].total_alunos].faltas);
+        check_frequency(&student[n_class][class[n_class].total_alunos].faltas);
 
         for (int i = 0; i < 2; i++)
         {
@@ -31,7 +32,7 @@ void read_student_data(class_data class[], student_data student[][30], int n_cla
             check_grade(&student[n_class][class[n_class].total_alunos].nota[i], i);
         }
 
-        class[n_class].total_alunos++;
+        (class[n_class].total_alunos)++;
         
         printf("\nAinda ha alunos?" 
                 "\n(0) Nao"
@@ -42,25 +43,25 @@ void read_student_data(class_data class[], student_data student[][30], int n_cla
 
 void check_frequency(int *frequency)
 {
-    while (*frequency < 1)
+    while (*frequency < 0)
     {
         printf(RED_TEXT 
                 "\n\tERROR: Digite numeros positivos! \n"
                RESET_TEXT);
-        printf("\tFrequencia: ");
+        printf("\tFaltas: ");
         scanf("%d", frequency);
     }
 }
 
 void check_grade(float *grade, int n)
 {
-    while (*grade < 1 || *grade > 10)
+    while (*grade < 0 || *grade > 10)
     {
         printf(RED_TEXT 
-                "\n\tERROR: Digite numeros entre 1 e 10! \n"
+                "\n\tERROR: Digite numeros entre 0 e 10! \n"
                RESET_TEXT);
-        printf("\tNota %d: ", n);
-        scanf("%d", grade);
+        printf("\tNota %d: ", n + 1);
+        scanf("%f", grade);
     }
 }
 
@@ -69,8 +70,8 @@ void menu_reports(int *answer)
     printf("\nOPCOES"
            "\n(0) Finalizar"
            "\n(1) Ver relatorio por aluno"
-           "\n(2) Ver relatorio por turma"
-           "\n Qual opcao deseja realizar? ");
+           "\n(2) Ver relatorio por turma \n"
+           "\nQual opcao deseja realizar? ");
     scanf("%d", answer);
 }
 
@@ -119,13 +120,13 @@ void show_reports_per_student(class_data class[], student_data student[][30])
     
     printf("De qual turma? ");
     scanf("%d", &n_class);
-    check_class(n_class);
+    check_class(&n_class);
 
     printf("De qual aluno? ");
     scanf("%d", &n_student);
-    check_student(class, n_class, n_student);
+    check_student(class, n_class, &n_student);
 
-    show_data_students(student, n_class, n_student);
+    show_student_data(student, n_class, n_student);
     show_message(student[n_class][n_student].status);
 }
 
@@ -152,7 +153,7 @@ void check_student(class_data class[], int n_class, int *n_student)
     }
 }
 
-void show_data_students(student_data student[][30], int n_class, int n_student)
+void show_student_data(student_data student[][30], int n_class, int n_student)
 {
     calculate_average(student, n_class, n_student);
     check_status(student, n_class, n_student);
@@ -160,12 +161,12 @@ void show_data_students(student_data student[][30], int n_class, int n_student)
            "\nNota 1: %.1f"
            "\nNota 2: %.1f"
            "\nMedia Final: %.1f"
-           "\nFrequencia: %d",
+           "\nFaltas: %d",
            student[n_class][n_student].nome, 
            student[n_class][n_student].nota[0],
            student[n_class][n_student].nota[1],
            student[n_class][n_student].media_final,
-           student[n_class][n_student].frequencia);
+           student[n_class][n_student].faltas);
 }
 
 void calculate_average(student_data student[][30], int n_class, int n_student)
@@ -177,7 +178,7 @@ void calculate_average(student_data student[][30], int n_class, int n_student)
 
 void check_status(student_data student[][30], int n_class, int n_student)
 {
-    if (student[n_class][n_student].frequencia > 10)
+    if (student[n_class][n_student].faltas > 10)
     {
         student[n_class][n_student].status = 3;
         return;
@@ -226,17 +227,17 @@ void show_reports_per_class(class_data class[], student_data student[][30])
     
     printf("De qual turma? ");
     scanf("%d", &n_class);
-    check_class(n_class);
+    check_class(&n_class);
 
     count_avarage_8(class, student, n_class);
     count_grade_zero(class, student, n_class);
     count_substitute_exam(class, student, n_class);
     calculate_general_avarage(class, student, n_class);
 
-    show_data_class(class, n_class);
+    show_class_data(class, n_class);
 }
 
-void show_data_class(class_data class[], int n_class)
+void show_class_data(class_data class[], int n_class)
 {
     printf("\nTotal de alunos: %d"
            "\nTotal de alunos com media maior que 8: %d"
@@ -257,7 +258,7 @@ void count_avarage_8(class_data class[], student_data student[][30], int n_class
         calculate_average(student, n_class, i);
         if (student[n_class][i].media_final > 8)
         {
-            class[n_class].media_maior_8++;
+            (class[n_class].media_maior_8)++;
         }
     }
 }
@@ -268,7 +269,7 @@ void count_grade_zero(class_data class[], student_data student[][30], int n_clas
     {
         if (!(student[n_class][i].nota[0] && student[n_class][i].nota[1]))
         {
-            class[n_class].notas_zeradas++;
+            (class[n_class].notas_zeradas)++;
         }
     }
 }
@@ -280,7 +281,7 @@ void count_substitute_exam(class_data class[], student_data student[][30], int n
         check_status(student, n_class, i);
         if (student[n_class][i].status == 1)
         {
-            class[n_class].farao_substitutiva++;
+            (class[n_class].farao_substitutiva)++;
         }
     }
 }
@@ -293,4 +294,19 @@ void calculate_general_avarage(class_data class[], student_data student[][30], i
         class[n_class].media_geral += student[n_class][i].media_final;
     }
     class[n_class].media_geral /= class[n_class].total_alunos;
+}
+
+void show_all_data(class_data class[], student_data student[][30])
+{
+    printf(GREEN_TEXT "Carregando dados..." RESET_TEXT);
+    for (int i = 0; i < 3; i++)
+    {
+        printf(GREEN_TEXT "\n>>> Turma (%d)" RESET_TEXT, i + 1);
+        for (int j = 0; j < class[i].total_alunos; j++)
+        {
+            printf(RED_TEXT "\n\nAluno (%d)\n" RESET_TEXT, j + 1);
+            show_student_data(student, i, j);
+        }
+        printf("\n\n");
+    }
 }

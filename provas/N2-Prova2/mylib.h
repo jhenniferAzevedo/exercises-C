@@ -5,7 +5,7 @@
 typedef struct student_data
 {
     char nome[50];
-    int frequencia,
+    int faltas,
         status;
     float nota[2],
           media_final;
@@ -33,13 +33,16 @@ void show_reports(class_data class[], student_data student[][30]);
 void show_reports_per_student(class_data class[], student_data student[][30]);
 void check_class(int *n_class);
 void check_student(class_data class[], int n_class, int *n_student);
-void show_data_students(student_data student[][30], int n_class, int n_student);
+void show_student_data(student_data student[][30], int n_class, int n_student);
 void calculate_average(student_data student[][30], int n_class, int n_student);
 void check_status(student_data student[][30], int n_class, int n_student);
 void show_message(int status);
 void show_reports_per_class(class_data class[], student_data student[][30]);
-void show_data_class(class_data class[], int n_class);
+void show_class_data(class_data class[], int n_class);
 void count_avarage_8(class_data class[], student_data student[][30], int n_class);
 void count_grade_zero(class_data class[], student_data student[][30], int n_class);
 void count_substitute_exam(class_data class[], student_data student[][30], int n_class);
 void calculate_general_avarage(class_data class[], student_data student[][30], int n_class);
+
+// Para testar
+void show_all_data(class_data class[], student_data student[][30]);
