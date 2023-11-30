@@ -32,7 +32,7 @@ void read_student_data(class_data class[], student_data student[][30], int n_cla
             check_grade(&student[n_class][n_student].nota[i], i);
         }
 
-        (class[n_class].total_alunos)++;
+        n_student++;
         
         printf("\nAinda ha alunos?" 
                 "\n(0) Nao"
