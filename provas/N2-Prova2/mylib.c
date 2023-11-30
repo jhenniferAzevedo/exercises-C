@@ -15,21 +15,21 @@ void read_data(class_data class[], student_data student[][30])
 
 void read_student_data(class_data class[], student_data student[][30], int n_class)
 {
-    int answer;
+    int answer, n_student = 0;
     do {
-        printf("\n\tAluno (%d)\n", class[n_class].total_alunos + 1);
+        printf("\n\tAluno (%d)\n", n_student + 1);
 
         printf("\tNome: ");
-        scanf("%s", student[n_class][class[n_class].total_alunos].nome);
+        scanf("%s", student[n_class][n_student].nome);
         printf("\tFaltas: ");
-        scanf("%d", &student[n_class][class[n_class].total_alunos].faltas);
-        check_frequency(&student[n_class][class[n_class].total_alunos].faltas);
+        scanf("%d", &student[n_class][n_student].faltas);
+        check_frequency(&student[n_class][n_student].faltas);
 
         for (int i = 0; i < 2; i++)
         {
             printf("\tNota %d: ", i + 1);
-            scanf("%f", &student[n_class][class[n_class].total_alunos].nota[i]);
-            check_grade(&student[n_class][class[n_class].total_alunos].nota[i], i);
+            scanf("%f", &student[n_class][n_student].nota[i]);
+            check_grade(&student[n_class][n_student].nota[i], i);
         }
 
         (class[n_class].total_alunos)++;
@@ -39,6 +39,8 @@ void read_student_data(class_data class[], student_data student[][30], int n_cla
                 "\n(1) Sim \n");
         scanf("%d", &answer);
     } while (answer);
+
+    class[n_class].total_alunos = n_student;
 }
 
 void check_frequency(int *frequency)
@@ -65,6 +67,7 @@ void check_grade(float *grade, int n)
     }
 }
 
+// Relatórios
 void menu_reports(int *answer)
 {
     printf("\nOPCOES"
