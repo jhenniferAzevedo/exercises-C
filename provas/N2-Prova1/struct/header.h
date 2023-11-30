@@ -88,6 +88,9 @@ void menu_report(void);
 /* Mostra o cadatro e suas informações de acordo com o número do cadastro (i). */
 void menu_register(register_data registration[], int i);
 
+/* Pausa o programa e depois limpa todo o histórico no terminal. */
+void pause_and_clear();
+
 
 // 1. RELATORIO GERAL
 

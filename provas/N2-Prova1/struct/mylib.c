@@ -199,6 +199,14 @@ void menu_register(register_data registration[], int i)
            registration[i].amount);
 }
 
+void pause_and_clear()
+{
+    printf("\nDigite qualquer tecla para continuar...");
+    getchar();
+    getchar();
+    system("clear");
+}
+
 /* 1. RELATÓRIO GERAL */ 
 
 void show_general_report(register_data registration[], 

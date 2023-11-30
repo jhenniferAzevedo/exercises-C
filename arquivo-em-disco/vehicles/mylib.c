@@ -211,32 +211,47 @@ void check_vehicles(int amount)
     printf("\n>>> Total de veiculos: %d\n", amount);
 }
 
+void pause_and_clear(void)
+{
+    printf("\nDigite qualquer tecla para continuar...");
+    getchar();
+    getchar();
+    system("clear");
+}
+
 void show_reports(register_data registration[], 
     counter_data *counter)
 {
     int answer;
     do {
         menu_report(&answer);
+        system("clear");
+
         switch (answer)
         {
         case 1:
             show_general_report(registration, counter);
+            pause_and_clear();
             break;
 
         case 2:
             show_report_by_color(registration, counter);
+            pause_and_clear();
             break;
 
         case 3:
             show_report_by_code(registration, counter);
+            pause_and_clear();
             break;
         
         case 4:
             show_report_by_color_and_code(registration, counter);
+            pause_and_clear();
             break;
         
         case 5:
             add_new_vehicle(registration, counter);
+            pause_and_clear();
             break;
 
         case 0:
@@ -248,9 +263,10 @@ void show_reports(register_data registration[],
             printf(RED_TEXT
                     "\nValor invalido! \nDigite um numero valo.\n"
                    RESET_TEXT);
+            pause_and_clear();
             break;
         }
-    } while (answer != 0);
+    } while (answer);
 }
 
 /* RELATÓRIO GERAL */ 

@@ -51,8 +51,9 @@ void add_to_existing_registration(register_data registration[],
 // RELATÓRIOS
 void menu_report(int *answer);
 void menu_register(register_data registration[], int i);
+void pause_and_clear(void);
 void show_reports(register_data registration[],
-    counter_data *counter);
+                  counter_data *counter);
 void check_vehicles(int amount);
 
 

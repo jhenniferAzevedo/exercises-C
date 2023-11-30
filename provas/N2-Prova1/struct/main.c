@@ -10,35 +10,35 @@ int main(void) {
 
     do
     {
-        system("cls");
         menu_report();
         scanf("%d", &resp);
+        system("clear");
 
         switch (resp)
         {
         case 1:
             show_general_report(cadastro_veiculo, &contador);
-            system("pause");
+            pause_and_clear();
             break;
 
         case 2:
             show_report_by_color(cadastro_veiculo, &contador);
-            system("pause");
+            pause_and_clear();
             break;
 
         case 3:
             show_report_by_code(cadastro_veiculo, &contador);
-            system("pause");
+            pause_and_clear();
             break;
         
         case 4:
             show_report_by_color_and_code(cadastro_veiculo, &contador);
-            system("pause");
+            pause_and_clear();
             break;
         
         case 5:
             add_new_vehicle(cadastro_veiculo, &contador);
-            system("pause");
+            pause_and_clear();
             break;
 
         case 0:
@@ -46,7 +46,7 @@ int main(void) {
             break;
         default:
             printf("\nValor invalido! \nDigite um numero valo.\n");
-            system("pause");
+            pause_and_clear();
             break;
         }
     } while (resp != 0);
