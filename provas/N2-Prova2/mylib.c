@@ -33,13 +33,17 @@ void read_student_data(class_data class[], student_data student[][30], int n_cla
         }
 
         n_student++;
+        student[n_class][n_student].media_final = -1;
         
         printf("\nAinda ha alunos?" 
                 "\n(0) Nao"
                 "\n(1) Sim \n");
         scanf("%d", &answer);
-    } while (answer);
+    } while (answer && n_student < 30);
 
+    printf(RED_TEXT 
+            "\n\tLeituras encerradas! \n"
+           RESET_TEXT);
     class[n_class].total_alunos = n_student;
 }
 
@@ -158,8 +162,10 @@ void check_student(class_data class[], int n_class, int *n_student)
 
 void show_student_data(student_data student[][30], int n_class, int n_student)
 {
-    calculate_average(student, n_class, n_student);
-    check_status(student, n_class, n_student);
+    if (student[n_class][n_student].media_final == -1)
+        calculate_average(student, n_class, n_student);
+        check_status(student, n_class, n_student);
+    
     printf("\nNome: %s"
            "\nNota 1: %.1f"
            "\nNota 2: %.1f"
