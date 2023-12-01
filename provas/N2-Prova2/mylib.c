@@ -39,8 +39,11 @@ void read_student_data(class_data class[], student_data student[][30], int n_cla
                 "\n(0) Nao"
                 "\n(1) Sim \n");
         scanf("%d", &answer);
-    } while (answer);
+    } while (answer && n_student < 30);
 
+    printf(RED_TEXT 
+            "\n\tLeituras encerradas! \n"
+           RESET_TEXT);
     class[n_class].total_alunos = n_student;
 }
 
