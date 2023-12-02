@@ -261,7 +261,7 @@ void show_reports(register_data registration[],
             break;
         default:
             printf(RED_TEXT
-                    "\nValor invalido! \nDigite um numero valo.\n"
+                    "\nValor invalido! \nDigite um numero valido.\n"
                    RESET_TEXT);
             pause_and_clear();
             break;

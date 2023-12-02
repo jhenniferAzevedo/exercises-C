@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/jhennifer/Documentos/Repositories/exercises-C/exercises/outros",
-      "program": "/home/jhennifer/Documentos/Repositories/exercises-C/exercises/outros/build/Debug/outDebug",
+      "cwd": "/home/jhennifer/Documentos/Repositories/exercises-C/provas/N2-Prova2",
+      "program": "/home/jhennifer/Documentos/Repositories/exercises-C/provas/N2-Prova2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
